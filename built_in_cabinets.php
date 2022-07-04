@@ -525,7 +525,7 @@
 									<h3 class="text-danger">ENTER THE REQUIRED SIZES</h3>
 									<div class="field">
 										<div class="label">WIDTH</div>
-										<input type="text" />
+										<input type="text" required />
 									</div>
 									<div class="field">
 										<div class="label">HEIGHT</div>
