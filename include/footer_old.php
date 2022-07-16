@@ -233,12 +233,12 @@
 								<a href="#"><i class="ti-close"></i></a>
 							</span>
                         <div class="image">
-                            <a href="javascript:void(.)">
+                            <a href="shop-product-basic.html">
                                 <img src="assets/images/cart-product-image/01.jpg" class="img-fluid" alt="">
                             </a>
                         </div>
                         <div class="content">
-                            <h5><a href="javascript:void(0)">Dark Brown Leather Watch</a></h5>
+                            <h5><a href="shop-product-basic.html">Dark Brown Leather Watch</a></h5>
                             <p><span class="main-price discounted">$200.00</span> <span class="discounted-price">$180.00</span></p>
 
                         </div>
@@ -252,12 +252,12 @@
 								<a href="#"><i class="ti-close"></i></a>
 							</span>
                         <div class="image">
-                            <a href="javascript:void(0)">
+                            <a href="shop-product-basic.html">
                                 <img src="assets/images/cart-product-image/02.jpg" class="img-fluid" alt="">
                             </a>
                         </div>
                         <div class="content">
-                            <h5><a href="javascript:void(0)">Dining Chair</a></h5>
+                            <h5><a href="shop-product-basic.html">Dining Chair</a></h5>
                             <p><span class="main-price discounted">$300.00</span> <span class="discounted-price">$220.00</span></p>
 
                         </div>
@@ -271,12 +271,12 @@
 								<a href="#"><i class="ti-close"></i></a>
 							</span>
                         <div class="image">
-                            <a href="javascript:void(0)">
+                            <a href="shop-product-basic.html">
                                 <img src="assets/images/cart-product-image/03.jpg" class="img-fluid" alt="">
                             </a>
                         </div>
                         <div class="content">
-                            <h5><a href="javascript:void(0)">Creative Wooden Stand</a></h5>
+                            <h5><a href="shop-product-basic.html">Creative Wooden Stand</a></h5>
                             <p><span class="main-price discounted">$100.00</span> <span class="discounted-price">$80.00</span></p>
 
                         </div>
@@ -290,12 +290,12 @@
 								<a href="#"><i class="ti-close"></i></a>
 							</span>
                         <div class="image">
-                            <a href="javascript:void(0)">
+                            <a href="shop-product-basic.html">
                                 <img src="assets/images/cart-product-image/01.jpg" class="img-fluid" alt="">
                             </a>
                         </div>
                         <div class="content">
-                            <h5><a href="javascript:void(0)">Dark Brown Leather Watch</a></h5>
+                            <h5><a href="shop-product-basic.html">Dark Brown Leather Watch</a></h5>
                             <p><span class="main-price discounted">$200.00</span> <span class="discounted-price">$180.00</span></p>
 
                         </div>
@@ -309,12 +309,12 @@
 								<a href="#"><i class="ti-close"></i></a>
 							</span>
                         <div class="image">
-                            <a href="javascript:void(0)">
+                            <a href="shop-product-basic.html">
                                 <img src="assets/images/cart-product-image/02.jpg" class="img-fluid" alt="">
                             </a>
                         </div>
                         <div class="content">
-                            <h5><a href="javascript:void(0)">Creative Wooden Stand</a></h5>
+                            <h5><a href="shop-product-basic.html">Creative Wooden Stand</a></h5>
                             <p><span class="main-price discounted">$200.00</span> <span class="discounted-price">$180.00</span></p>
 
                         </div>
@@ -326,7 +326,7 @@
                 <!--=======  cart buttons  =======-->
 
                 <div class="cart-buttons">
-                    <a href="javascript:void(0)">view wishlist</a>
+                    <a href="shop-wishlist.html">view wishlist</a>
                 </div>
 
                 <!--=======  End of cart buttons  =======-->
@@ -368,12 +368,12 @@
 								<a href="#"><i class="ti-close"></i></a>
 							</span>
                         <div class="image">
-                            <a href="javascript:void(0)">
+                            <a href="shop-product-basic.html">
                                 <img src="assets/images/cart-product-image/01.jpg" class="img-fluid" alt="">
                             </a>
                         </div>
                         <div class="content">
-                            <h5><a href="javascript:void(0)">Dark Brown Leather Watch</a></h5>
+                            <h5><a href="shop-product-basic.html">Dark Brown Leather Watch</a></h5>
                             <p><span class="cart-count">2 x </span> <span class="discounted-price">$180.00</span></p>
 
                         </div>
@@ -387,12 +387,12 @@
 								<a href="#"><i class="ti-close"></i></a>
 							</span>
                         <div class="image">
-                            <a href="javascript:void(0)">
+                            <a href="shop-product-basic.html">
                                 <img src="assets/images/cart-product-image/02.jpg" class="img-fluid" alt="">
                             </a>
                         </div>
                         <div class="content">
-                            <h5><a href="javascript:void(0)">Dining Chair</a></h5>
+                            <h5><a href="shop-product-basic.html">Dining Chair</a></h5>
                             <p><span class="cart-count">2 x </span> <span class="discounted-price">$220.00</span></p>
 
                         </div>
@@ -406,12 +406,12 @@
 								<a href="#"><i class="ti-close"></i></a>
 							</span>
                         <div class="image">
-                            <a href="javascript:void(0)">
+                            <a href="shop-product-basic.html">
                                 <img src="assets/images/cart-product-image/03.jpg" class="img-fluid" alt="">
                             </a>
                         </div>
                         <div class="content">
-                            <h5><a href="javascript:void(0)">Creative Wooden Stand</a></h5>
+                            <h5><a href="shop-product-basic.html">Creative Wooden Stand</a></h5>
                             <p><span class="cart-count">2 x </span> <span class="discounted-price">$80.00</span></p>
 
                         </div>
@@ -425,12 +425,12 @@
 								<a href="#"><i class="ti-close"></i></a>
 							</span>
                         <div class="image">
-                            <a href="javascript:void(0)">
+                            <a href="shop-product-basic.html">
                                 <img src="assets/images/cart-product-image/01.jpg" class="img-fluid" alt="">
                             </a>
                         </div>
                         <div class="content">
-                            <h5><a href="javascript:void(0)">Dark Brown Leather Watch</a></h5>
+                            <h5><a href="shop-product-basic.html">Dark Brown Leather Watch</a></h5>
                             <p><span class="cart-count">2 x </span> <span class="discounted-price">$180.00</span></p>
 
                         </div>
@@ -444,12 +444,12 @@
 								<a href="#"><i class="ti-close"></i></a>
 							</span>
                         <div class="image">
-                            <a href="javascript:void(0)">
+                            <a href="shop-product-basic.html">
                                 <img src="assets/images/cart-product-image/02.jpg" class="img-fluid" alt="">
                             </a>
                         </div>
                         <div class="content">
-                            <h5><a href="javascript:void(0)">Creative Wooden Stand</a></h5>
+                            <h5><a href="shop-product-basic.html">Creative Wooden Stand</a></h5>
                             <p><span class="cart-count">2 x </span> <span class="discounted-price">$180.00</span></p>
 
                         </div>
@@ -470,8 +470,8 @@
                 <!--=======  cart buttons  =======-->
 
                 <div class="cart-buttons">
-                    <a href="javascript:void(0)">view cart</a>
-                    <a href="javascript:void(0)">checkout</a>
+                    <a href="shop-cart.html">view cart</a>
+                    <a href="shop-checkout.html">checkout</a>
                 </div>
 
                 <!--=======  End of cart buttons  =======-->
@@ -511,7 +511,7 @@
 
     <div class="search-overlay-content">
         <div class="input-box">
-            <form action="">
+            <form action="https://htmldemo.net/lezada/lezada/index.html">
                 <input type="search" placeholder="Search Products...">
             </form>
         </div>

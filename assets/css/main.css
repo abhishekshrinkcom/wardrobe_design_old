@@ -64,6 +64,71 @@
 /*----------------------------------------*/
 
 
+/* muli font */
+
+@font-face {
+    font-family: Muli;
+    src: url('../fonts/muli/Muli.ttf');
+}
+
+@font-face {
+    font-family: Muli-Bold;
+    src: url('../fonts/muli/Muli-Bold.ttf');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Muli-BoldItalic;
+    src: url('../fonts/muli/Muli-BoldItalic.ttf');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Muli-ExtraLight;
+    src: url('../fonts/muli/Muli-ExtraLight.ttf');
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: Muli-ExtraLightItalic;
+    src: url('../fonts/muli/Muli-ExtraLightItalic.ttf');
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: Muli-Italic;
+    src: url('../fonts/muli/Muli-Italic.ttf');
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: Muli-Light;
+    src: url('../fonts/muli/Muli-Light.ttf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Muli-LightItalic;
+    src: url('../fonts/muli/Muli-LightItalic.ttf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Muli-SemiBold;
+    src: url('../fonts/muli/Muli-SemiBold.ttf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Muli-Semi-BoldItalic;
+    src: url('../fonts/muli/Muli-Semi-BoldItalic.ttf');
+    font-weight: 300;
+}
+
+
+/* muli font */
+
+
 /*-- Google Font --*/
 
 @import url("https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900");
@@ -84,7 +149,7 @@ body {
 }
 
 body {
-    font-family: "Work Sans", sans-serif;
+    font-family: Muli;
     font-size: 15px;
     font-weight: 400;
     font-style: normal;
@@ -145,7 +210,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Work Sans", sans-serif;
+    font-family: 'Muli';
     font-weight: 400;
     margin-top: 0;
     color: #333333;

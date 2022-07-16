@@ -1,7 +1,426 @@
 <?php include("include/header.php"); ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-<link rel="stylesheet" href="assets/css/built_in_cabinets.css">
+<style>
+	header,
+	.footer-container.footer-one.pt-100.pb-50 {
+		display: none;
+	}
 
+	/* .container {
+    width: var(--containerWidth);
+    background: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 50px 35px 10px 35px;
+} */
+	/* header {
+    font-size: 35px;
+    font-weight: 600;
+    margin: 0 0 30px 0;
+} */
+	:root {
+		--primary: #333;
+		--secondary: #333;
+		--errorColor: red;
+		--stepNumber: 6;
+		--containerWidth: 600px;
+		--bgColor: #333;
+		--inputBorderColor: lightgray;
+	}
+
+	.form-outer {
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.form-outer form {
+		display: flex;
+		width: calc(100% * var(--stepNumber));
+	}
+
+	.form-outer form .page {
+		width: calc(100% / var(--stepNumber));
+		transition: margin-left 0.3s ease-in-out;
+		max-height: 525px;
+		overflow-y: auto;
+	}
+
+	.form-outer form .page .title {
+		text-align: left;
+		font-size: 25px;
+		font-weight: 500;
+	}
+
+	.form-outer form .page .field {
+		width: 100%;
+		height: 45px;
+		margin: 45px 0;
+		display: flex;
+		position: relative;
+	}
+
+	form .page .field .label {
+		position: absolute;
+		top: -30px;
+		font-weight: 500;
+	}
+
+	form .page .field input {
+		box-sizing: border-box;
+		height: 100%;
+		width: 100%;
+		border: 1px solid var(--inputBorderColor);
+		border-radius: 5px;
+		padding-left: 15px;
+		margin: 0 1px;
+		font-size: 18px;
+		transition: border-color 150ms ease;
+	}
+
+	form .page .field input.invalid-input {
+		border-color: var(--errorColor);
+	}
+
+	form .page .field select {
+		width: 100%;
+		padding-left: 10px;
+		font-size: 17px;
+		font-weight: 500;
+	}
+
+	form .page .field button {
+		width: 100%;
+		height: calc(100% + 5px);
+		border: none;
+		background: var(--secondary);
+		margin-top: -20px;
+		border-radius: 5px;
+		color: #fff;
+		cursor: pointer;
+		font-size: 18px;
+		font-weight: 500;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		transition: 0.5s ease;
+	}
+
+	form .page .field button:hover {
+		background: #000;
+	}
+
+	form .page .btns button {
+		margin-top: -20px !important;
+	}
+
+	form .page .btns button.prev {
+		margin-right: 3px;
+		font-size: 17px;
+	}
+
+	form .page .btns button.next {
+		margin-left: 3px;
+	}
+
+	.progress-bar {
+		display: flex;
+		/* margin: 40px 0; */
+		user-select: none;
+		flex-direction: column;
+		background: #fff;
+		color: #000;
+	}
+
+	.progress-bar .step {
+		text-align: center;
+		width: 100%;
+		position: relative;
+	}
+
+	.progress-bar .step p {
+		font-weight: 500;
+		font-size: 18px;
+		color: #000;
+		margin-bottom: 8px;
+	}
+
+	.progress-bar .step .bullet {
+		height: 40px;
+		width: 40px;
+		border: 2px solid #000;
+		display: inline-block;
+		/* border-radius: 50%; */
+		position: relative;
+		transition: 0.2s;
+		font-weight: 500;
+		font-size: 17px;
+		line-height: 14px;
+	}
+
+	.progress-bar .step .bullet.active {
+		border-color: var(--primary);
+		background: var(--primary);
+	}
+
+	.progress-bar .step .bullet span {
+		position: absolute;
+		top: 30%;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.progress-bar .step .bullet.active span {
+		display: none;
+	}
+
+	/* .progress-bar .step .bullet:before,
+	.progress-bar .step .bullet:after {
+		position: absolute;
+		content: "";
+		bottom: 11px;
+		right: -51px;
+		height: 3px;
+		width: 44px;
+		background: #262626;
+	} */
+
+	.progress-bar .step .bullet.active:after {
+		background: var(--primary);
+		transform: scaleX(0);
+		transform-origin: left;
+		animation: animate 0.3s linear forwards;
+	}
+
+	@keyframes animate {
+		100% {
+			transform: scaleX(1);
+		}
+	}
+
+	.progress-bar .step:last-child .bullet:before,
+	.progress-bar .step:last-child .bullet:after {
+		display: none;
+	}
+
+	.progress-bar .step p.active {
+		color: var(--primary);
+		transition: 0.2s linear;
+	}
+
+	.progress-bar .step .check {
+		position: absolute;
+		left: 50%;
+		top: 45%;
+		font-size: 15px;
+		transform: translate(-50%, -50%);
+		display: none;
+	}
+
+	.progress-bar .step .check.active {
+		display: block;
+		color: #fff;
+	}
+
+	@media screen and (max-width: 660px) {
+		.progress-bar .step p {
+			display: none;
+		}
+
+		.progress-bar .step .bullet::after,
+		.progress-bar .step .bullet::before {
+			display: none;
+		}
+
+		.progress-bar .step .bullet {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.progress-bar .step .check {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			font-size: 15px;
+			transform: translate(-50%, -50%);
+			display: none;
+		}
+
+		.step {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+
+	/* @media screen and (max-width: 490px) {
+    :root {
+        --containerWidth: 100%;
+    }
+    .container {
+        box-sizing: border-box;
+        border-radius: 0;
+    }
+} */
+
+	/* radio btn with image */
+	div.radio-with-Icon {
+		display: block;
+	}
+
+	div.radio-with-Icon p.radioOption-Item {
+		display: inline-block;
+		width: 100px;
+		/* height: 100px; */
+		box-sizing: border-box;
+		/* margin: auto 15px; */
+		border: none;
+	}
+
+	div.radio-with-Icon p.radioOption-Item label {
+		display: block;
+		height: auto;
+		width: auto;
+		/* padding: 10px; */
+		/* border-radius: 10px; */
+		border: 2px solid #de183147;
+		color: #de1831;
+		cursor: pointer;
+		opacity: .8;
+		transition: none;
+		font-size: 13px;
+		/* padding-top: 25px; */
+		text-align: center;
+		margin: 0 !important;
+	}
+
+	div.radio-with-Icon p.radioOption-Item label:hover,
+	div.radio-with-Icon p.radioOption-Item label:focus,
+	div.radio-with-Icon p.radioOption-Item label:active {
+		opacity: .5;
+		/* background-color: #de1831; */
+		color: #de1831;
+		margin: 0 !important;
+	}
+
+	div.radio-with-Icon p.radioOption-Item label::after,
+	div.radio-with-Icon p.radioOption-Item label:after,
+	div.radio-with-Icon p.radioOption-Item label::before,
+	div.radio-with-Icon p.radioOption-Item label:before {
+		opacity: 0 !important;
+		width: 0 !important;
+		height: 0 !important;
+		margin: 0 !important;
+	}
+
+	div.radio-with-Icon p.radioOption-Item label i.fa {
+		display: block;
+		font-size: 50px;
+	}
+
+	div.radio-with-Icon p.radioOption-Item input[type="radio"] {
+		opacity: 0 !important;
+		width: 0 !important;
+		height: 0 !important;
+	}
+
+	div.radio-with-Icon p.radioOption-Item input[type="radio"]:active~label {
+		opacity: 1;
+	}
+
+	div.radio-with-Icon p.radioOption-Item input[type="radio"]:checked~label {
+		opacity: 1;
+		border: none;
+		/* background-color: #de1831; */
+		color: #de1831;
+		border: 2px solid #de1831;
+	}
+
+	div.radio-with-Icon p.radioOption-Item input[type="radio"]:hover,
+	div.radio-with-Icon p.radioOption-Item input[type="radio"]:focus,
+	div.radio-with-Icon p.radioOption-Item input[type="radio"]:active {
+		margin: 0 !important;
+	}
+
+	div.radio-with-Icon p.radioOption-Item input[type="radio"]+label:before,
+	div.radio-with-Icon p.radioOption-Item input[type="radio"]+label:after {
+		margin: 0 !important;
+	}
+
+	.radio-with-Icon img {
+		width: auto;
+		height: 100px;
+	}
+
+	/* collapse icon */
+	[data-toggle="collapse"] .fa:before {
+		content: "\f139";
+	}
+
+	[data-toggle="collapse"].collapsed .fa:before {
+		content: "\f13a";
+	}
+
+	.fr_col {
+		display: flex !important;
+		gap: 1%;
+		flex: 1 1 auto;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+
+	.fr_col img {
+		width: 94px;
+	}
+
+	.img_interior {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+	}
+
+	.img_interior p.radioOption-Item {
+		width: min-content !important;
+	}
+
+	.builder_img {
+		background: #e3e3e3;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 500px;
+	}
+
+	.btn-green {
+		background-color: #00a558 !important;
+		border: 1px solid #00a558 !important;
+	}
+
+	.para_depth2 {
+		border-radius: 5px;
+	}
+
+	div.built_in_cabinets p.radioOption-Item {
+		display: inline-block;
+		width: 30%;
+		height: auto;
+	}
+
+	.built_in_cabinets img {
+		width: 100% !important;
+		height: auto !important;
+	}
+
+	div.floorPlan1 p.radioOption-Item {
+		display: inline-block;
+		width: 40%;
+		height: auto;
+	}
+
+	.floorPlan1 img {
+		width: 100% !important;
+		height: auto !important;
+	}
+</style>
 <!-- <div class="breadcrumb-area breadcrumb-bg-1 pt-50 pb-70 mb-100">
 	<div class="container">
 		<div class="row">
@@ -16,19 +435,201 @@
 	</div>
 </div> -->
 
-<img src="assets/img_web/denir.png" alt="" class="position-absolute w345">
-<div class="section-title-container mb-40">
+
+<div class="section-title-container mb-80 mt-50">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-12 mt-50">
+			<div class="col-lg-12">
 				<div class="section-title section-title--one text-center">
-					<h1 class="config_head">Konfigurátor</h1>
-					<h4 class="config_subHead">Zvoľte si, aký nábytok chcete konfigurovať</h4>
+					<h1>WARDROBE CONFIGURATOR</h1>
+					<p>At Glide and Slide, we know it can be hard to ask for a quote for something without knowing whether you truly want it or can afford it. That's why we created our wardrobe configurator. The application allows you to put in the measurements, range, a number of doors required, measurement and material of the door you want to be fitted, the colour of the frame, the interior style and any material inside your fitted wardrobe. Once you've done this, the configurator will give you a price estimate, allowing you to make an informed decision regarding whether a bespoke wardrobe is the right move for you.</p>
+					<p>Once you have filled in our wardrobe configurator, we will take you to a payment page where you can decide if you want to go forward with the purchase or if you need more time. Please note that our configurator only quotes you for the price of the parts and not the installation process. Filling in our configurator has no hidden obligation to pay, so why not have a go today.</p>
+					<hr>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<!-- <div class="product-category-container mb-100 mb-md-90 mb-sm-90">
+	<div class="container wide three_ctg">
+		<div class="row">
+			<div class="col-lg-4 col-md-6 col-12">
+				<div class="single-category single-category--one wow zoomIn">
+					<div class="single-category__image single-category__image--one">
+						<img src="assets/img_web/skrina.jpg" class="img-fluid" alt="">
+					</div>
+					<div class="single-category__content single-category__content--one mt-25 mb-25">
+						<div class="title">
+							<p>Built-in wardrobe complete</p>
+							<a href="javascript:void(0)">Built-in wardrobe complete</a>
+						</div>
+						<p class="product-count">cabinet</p>
+					</div>
+					<a href="javascript:void(0)" class="banner-link" id="Built_in"></a>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 col-12">
+				<div class="single-category single-category--one wow zoomIn">
+					<div class="single-category__image single-category__image--one">
+						<img src="assets/img_web/posuv.jpg" class="img-fluid" alt="">
+					</div>
+					<div class="single-category__content single-category__content--one mt-25 mb-25">
+						<div class="title">
+							<p>Front sliding system separately</p>
+							<a href="javascript:void(0)">Front sliding system separately</a>
+						</div>
+
+						<p class="product-count">cabinet</p>
+					</div>
+					<a href="javascript:void(0)" class="banner-link"></a>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6 col-12">
+				<div class="single-category single-category--one wow zoomIn">
+					<div class="single-category__image single-category__image--one">
+						<img src="assets/img_web/vnutro.jpg" class="img-fluid" alt="">
+					</div>
+					<div class="single-category__content single-category__content--one mt-25 mb-25">
+						<div class="title">
+							<p>Front sliding system separately</p>
+							<a href="javascript:void(0)">Front sliding system separately</a>
+						</div>
+						<p class="product-count">cabinet</p>
+					</div>
+					<a href="javascript:void(0)" class="banner-link"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container wide four_opt" style="display:none">
+		<div class="row">
+			<div class="col-md-9">
+				<div class="row">
+					<div class="col-md-6 mb-2">
+						<div class="card p-2 single-slider-post">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="single-slider-post__image mb-30">
+										<a href="javascript:void(0)" id="plan_type_A">
+											<img src="assets/img_web/typ_a.png" class="img-fluid" alt="">
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 mb-2">
+						<div class="card p-2 single-slider-post">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="single-slider-post__image mb-30">
+										<a href="javascript:void(0)" id="plan_type_A">
+											<img src="assets/img_web/typ_b.png" class="img-fluid" alt="">
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 mb-2">
+						<div class="card p-2 single-slider-post">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="single-slider-post__image mb-30">
+										<a href="javascript:void(0)" id="plan_type_A">
+											<img src="assets/img_web/typ_c.png" class="img-fluid" alt="">
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 mb-2">
+						<div class="card p-2 single-slider-post">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="single-slider-post__image mb-30">
+										<a href="javascript:void(0)" id="plan_type_A">
+											<img src="assets/img_web/typ_d.png" class="img-fluid" alt="">
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="bg-dark card p-3 text-white">
+					<h4 class="text-white">Floor plan type selection</h4>
+					<p>In the first step of creating your built-in cabinet, click on the image to select the type of floor plan
+						(type A , B , C or D ) according to where your built-in cabinet should be located.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container wide parameter_1" style="display:none">
+		<div class="row">
+			<div class="col-md-9">
+				<h4>STEP 1: ENTER PARAMETERS (widths)</h4>
+				<p>Enter the width of the built-in cabinet.</p>
+				<div class="account-details-form">
+					<form action="#" class="">
+						<div class="row">
+							<div class="col-md-3 d-flex flex-column justify-content-center">
+								<div>
+									<label>Left height </label>
+									<input type="text" placeholder="" required="" id="" class="mx-1 para_lfh2 w-25"> in cm
+								</div>
+							</div>
+							<div class="col-md-6">
+								<img src="assets/img_web/box1.png" class="img-fluid w-100" alt="">
+								<div class="depth1 form-inline">
+									<label>Depth</label>
+									<input type="text" placeholder="" required="" id="" class="border-0 mx-1 para_depth2 w-25"> in cm
+								</div>
+								<div class="text-center">
+									<label>Width</label>
+									<input type="text" placeholder="" id="" required="" class="para_width2 w-25"> in cm
+								</div>
+							</div>
+							<div class="col-md-3 d-flex flex-column justify-content-center">
+								<div>
+									<label>Right height</label>
+									<input type="text" placeholder="" required="" id="" class="w-25 para_rfh2 mx-1"> in cm
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<h3>Parameters:</h3>
+				<div class="text-right">
+					<label>Width</label>
+					<input type="text" placeholder="" required="" id="para_width" onchange="parameter_width()" class="w-25 "> in cm
+				</div>
+				<div class="text-right">
+					<label>Depth</label>
+					<input type="text" placeholder="" required="" id="para_depth" class="w-25 "> in cm
+				</div>
+				<div class="text-right">
+					<label>Left front height</label>
+					<input type="text" placeholder="" required="" id="para_lfh" class="w-25 "> in cm
+				</div>
+				<div class="text-right">
+					<label>Right front height</label>
+					<input type="text" placeholder="" required="" id="para_rfh" class="w-25 "> in cm
+				</div>
+			</div>
+		</div>
+	</div>
+</div> -->
+
 
 <div class="product-category-container mb-md-90 mb-sm-90 pb-1">
 	<div class="container wide">
@@ -40,150 +641,309 @@
 			</div> -->
 		<!-- <div class=""> -->
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-1">
 				<div class="progress-bar">
 					<div class="step">
+						<!-- <p>Name</p> -->
+						<!-- <i class="fas fa-ruler"></i> -->
 						<div class="bullet">
-							<span>Výber typu</span>
+							<span>1</span>
 						</div>
 						<div class="check fas fa-check"></div>
 					</div>
-
 					<div class="step">
+						<!-- <p>Name</p> -->
+						<!-- <i class="fas fa-ruler"></i> -->
 						<div class="bullet">
-							<span>Parametre</span>
+							<span>2</span>
 						</div>
 						<div class="check fas fa-check"></div>
 					</div>
-
 					<div class="step">
+						<!-- <p>Contact</p> -->
 						<div class="bullet">
-							<span>Skladanie vnútra</span>
+							<span>3</span>
 						</div>
 						<div class="check fas fa-check"></div>
 					</div>
-
-					<!-- <div class="step">
+					<div class="step">
+						<!-- <p>Birth</p> -->
 						<div class="bullet">
 							<span>4</span>
 						</div>
 						<div class="check fas fa-check"></div>
-					</div> -->
-
-					<!-- <div class="step">
+					</div>
+					<div class="step">
+						<!-- <p>Debt</p> -->
 						<div class="bullet">
 							<span>5</span>
 						</div>
 						<div class="check fas fa-check"></div>
-					</div> -->
-
+					</div>
 					<div class="step">
+						<!-- <p>Adress</p> -->
 						<div class="bullet">
-							<span>Výber dvier</span>
+							<span>6</span>
 						</div>
 						<div class="check fas fa-check"></div>
 					</div>
-
 					<div class="step">
+						<!-- <p>Submit</p> -->
 						<div class="bullet">
-							<span>Výplň dvier</span>
+							<span>7</span>
 						</div>
 						<div class="check fas fa-check"></div>
 					</div>
-
 					<div class="step">
 						<div class="bullet">
-							<span>Cena + objednávka</span>
+							<span>8</span>
 						</div>
 						<div class="check fas fa-check"></div>
 					</div>
-
-					<!-- <div class="step">
+					<div class="step">
 						<div class="bullet">
 							<span>9</span>
 						</div>
 						<div class="check fas fa-check"></div>
 					</div>
-
 					<div class="step">
 						<div class="bullet">
 							<span>10</span>
 						</div>
 						<div class="check fas fa-check"></div>
 					</div>
-
 					<div class="step">
 						<div class="bullet">
 							<span>11</span>
 						</div>
 						<div class="check fas fa-check"></div>
 					</div>
-
 					<div class="step">
 						<div class="bullet">
 							<span>12</span>
 						</div>
 						<div class="check fas fa-check"></div>
 					</div>
-
 					<div class="step">
 						<div class="bullet">
 							<span>13</span>
 						</div>
 						<div class="check fas fa-check"></div>
 					</div>
-
 					<div class="step">
 						<div class="bullet">
 							<span>14</span>
 						</div>
 						<div class="check fas fa-check"></div>
-					</div> -->
+					</div>
 				</div>
 			</div>
 
 
-			<div class="col-md-12">
+			<div class="col-md-11">
 				<div class="form-outer">
 					<form action="#">
 						<div class="page slide-page">
-							<!-- <div class="title">Configurator for built-in cabinets</div> -->
+							<div class="title">Configurator for built-in cabinets</div>
 							<!-- <h4>Select a Range</h4> -->
 							<div class="radio-with-Icon built_in_cabinets">
-								<p class="radioOption-Item thee_cabinets">
+								<p class="radioOption-Item">
+									<input type="radio" name="range" id="BannerType11" value="true" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+									<label for="BannerType11">
+										<img src="assets/img_web/skrina.jpg" alt="">
+										<!-- <i class="fa fa-image"></i> -->
+										Built-in cabinet complete
+									</label>
+								</p>
+
+								<p class="radioOption-Item">
+									<input type="radio" name="range" id="BannerType21" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+									<label for="BannerType21">
+										<img src="assets/img_web/posuv.jpg" alt="">
+										<!-- <i class="fa fa-image"></i> -->
+										Front sliding system separately
+									</label>
+								</p>
+
+								<p class="radioOption-Item">
+									<input type="radio" name="range" id="BannerType31" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+									<label for="BannerType31">
+										<img src="assets/img_web/vnutro.jpg" alt="">
+										<!-- <i class="fa fa-image"></i> -->
+										The interior of the built-in cabinet separately
+									</label>
+								</p>
+							</div>
+
+							<div class="field btns">
+								<button class="prev-1 prev">Previous</button>
+								<button class="next-1 next btn-green">Next</button>
+							</div>
+						</div>
+
+						<div class="page">
+							<div class="title">Floor Plan</div>
+							<!-- <h4>Select a Range</h4> -->
+							<div class="radio-with-Icon floorPlan1">
+								<p class="radioOption-Item">
+									<input type="radio" name="floor_plan" id="planfloor1" value="true" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+									<label for="planfloor1">
+										<img src="assets/img_web/typ_a.png" alt="">
+									</label>
+								</p>
+
+								<p class="radioOption-Item">
+									<input type="radio" name="floor_plan" id="planfloor2" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+									<label for="planfloor2">
+										<img src="assets/img_web/typ_b.png" alt="">
+									</label>
+								</p>
+
+								<p class="radioOption-Item">
+									<input type="radio" name="floor_plan" id="planfloor3" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+									<label for="planfloor3">
+										<img src="assets/img_web/typ_c.png" alt="">
+									</label>
+								</p>
+								<p class="radioOption-Item">
+									<input type="radio" name="floor_plan" id="planfloor4" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+									<label for="planfloor4">
+										<img src="assets/img_web/typ_d.png" alt="">
+									</label>
+								</p>
+							</div>
+
+							<div class="field btns">
+								<button class="prev-1 prev">Previous</button>
+								<button class="next-1 next btn-green">Next</button>
+							</div>
+						</div>
+
+						<div class="page">
+							<div class="row">
+								<div class="col-md-9">
+									<h4>STEP 1: ENTER PARAMETERS (widths)</h4>
+									<p>Enter the width of the built-in cabinet.</p>
+									<div class="account-details-form">
+										<div class="row">
+											<div class="col-md-3 d-flex flex-column justify-content-center">
+												<div>
+													<label>Left height </label>
+													<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25"> in cm
+												</div>
+											</div>
+											<div class="col-md-6">
+												<img src="assets/img_web/box1.png" class="img-fluid w-100" alt="">
+												<div class="depth1 form-inline">
+													<label>Depth</label>
+													<input type="text" placeholder="" id="" class="border-0 mx-1 para_depth2 w-25"> in cm
+												</div>
+												<div class="text-center">
+													<label>Width</label>
+													<input type="text" placeholder="" id="" class="para_width2 w-25"> in cm
+												</div>
+											</div>
+											<div class="col-md-3 d-flex flex-column justify-content-center">
+												<div>
+													<label>Right height</label>
+													<input type="text" placeholder="" id="" class="w-25 para_rfh2 mx-1"> in cm
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<div class="col-md-3">
+									<h3>Parameters:</h3>
+									<div class="text-right">
+										<label>Width</label>
+										<input type="text" placeholder="" required="" id="para_width" onchange="parameter_width()" class="w-25 "> in cm
+									</div>
+									<div class="text-right">
+										<label>Depth</label>
+										<input type="text" placeholder="" required="" id="para_depth" class="w-25 "> in cm
+									</div>
+									<div class="text-right">
+										<label>Left front height</label>
+										<input type="text" placeholder="" required="" id="para_lfh" class="w-25 "> in cm
+									</div>
+									<div class="text-right">
+										<label>Right front height</label>
+										<input type="text" placeholder="" required="" id="para_rfh" class="w-25 "> in cm
+									</div>
+								</div>
+
+								<div class="field btns">
+									<button class="prev-1 prev">Previous</button>
+									<button class="next-1 next btn-green">Next</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="page">
+							<div class="title">Self Installation Wardrobe Configurator:</div>
+
+							<div class="title">DIMENSIONS</div>
+							<p>Take care when measuring up, it is important that your measurements are accurate in order for you to get the perfect fit on your new wardrobe.</p>
+							<h3 class="text-danger">ENTER THE REQUIRED SIZES</h3>
+							<div class="field">
+								<div class="label">WIDTH</div>
+								<input type="text" required />
+							</div>
+							<div class="field">
+								<div class="label">HEIGHT</div>
+								<input type="text" required />
+							</div>
+
+							<h4>DEPTH</h4>
+							<p>Our wardrobes have a default depth of 610mm. This is our standard and recommended sizing. If unsuitable and an alternative depth is required, please contact us.</p>
+
+							<div class="field">
+								<button class="prev-1 prev">Previous</button>
+								<button class="firstNext next btn-green">Next</button>
+							</div>
+						</div>
+
+						<div class="page">
+							<div class="title">RANGE:</div>
+							<br>
+							<p>Choose from Trent (Coated Steel), Avon (Aluminium) or Thames (Aluminium) below.</p>
+							<p><strong>Trent our entry range</strong>, which is the most cost effective steel frame system. <br>10 steel frame colour choices:<br> Silver / White / Black / Oak / Pearwood / Truffle Avola / Cream / Satin Gold / Stone Grey / Graphite</p>
+							<p><strong>The Avon range is the entry point</strong> into Aluminium that is Stylish &amp; sleek.</p>
+							<p>7 aluminium frame colour choices:<br> Natural Silver / Polished Silver / White / Graphite / Champagne / Black / Stone Grey</p>
+							<p><strong>The Thames range</strong> is the high end Aluminium profiling elegantly featured.<br> 7 aluminium frame colour choices:<br>Natural Silver / Polished Silver / White / Graphite / Champagne / Black / Stone Grey</p>
+							<h4>Select a Range</h4>
+							<div class="radio-with-Icon">
+								<p class="radioOption-Item">
 									<input type="radio" name="range" id="BannerType1" value="true" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
 									<label for="BannerType1">
-										<img src="assets/img_web/Vstavaná_skriňa.jpg" alt="" class="thee_cabinets_img">
+										<img src="assets/img_web/Trent-Profile.jpg" alt="">
 										<!-- <i class="fa fa-image"></i> -->
-										<!-- Vstavaná skriňa -->
-										<span class="tab1_head">Vstavaná skriňa</span>
+										Trent
 									</label>
 								</p>
 
 								<p class="radioOption-Item">
 									<input type="radio" name="range" id="BannerType2" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
 									<label for="BannerType2">
-										<img src="assets/img_web/Skrinka.jpg" alt="" class="thee_cabinets_img">
+										<img src="assets/img_web/Avon-Profile.jpg" alt="">
 										<!-- <i class="fa fa-image"></i> -->
-										<!-- Skrinka -->
-										<span class="tab1_head">Skrinka</span>
+										Avon
 									</label>
 								</p>
 
 								<p class="radioOption-Item">
 									<input type="radio" name="range" id="BannerType3" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
 									<label for="BannerType3">
-										<img src="assets/img_web/Ohranená_doska.jpg" alt="" class="thee_cabinets_img">
+										<img src="assets/img_web/Thames-Profile.jpg" alt="">
 										<!-- <i class="fa fa-image"></i> -->
-										<!-- Ohranená doska -->
-										<span class="tab1_head">Ohranená doska</span>
+										Thames
 									</label>
 								</p>
-								<div class="mx-auto">
-									<img src="assets/img_web/Konfigurácia_podľa_obrázka.jpg" alt="" class="cabin_b_img">
-								</div>
 							</div>
-
+							<div class="col-md-12 mt-3">
+								<img src="assets/img_web/Glide-and-Slide-Profiles-PDF-1.jpg" alt="" class="w-100">
+							</div>
 							<div class="field btns">
 								<button class="prev-1 prev">Previous</button>
 								<button class="next-1 next btn-green">Next</button>
@@ -191,280 +951,7 @@
 						</div>
 
 						<div class="page">
-							<!-- <div class="title">Floor Plan</div> -->
-							<div class="row">
-								<div class="col-md-12 col-lg-12">
-									<button type="button" class="btn btn-basic Späť_btn"><i class="font-weight-bold icon mr-1 ti-arrow-left"></i> Späť</button>
-								</div>
-								<div class="col-md-6 grid_center">
-									<img src="assets/img_web/Vstavaná_skriňa2.jpg" alt="">
-								</div>
-								<div class="col-md-6">
-									<div class="radio-with-Icon floorPlan1">
-										<p class="radioOption-Item">
-											<input type="radio" name="floor_plan" id="planfloor1" value="true" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-											<label for="planfloor1">
-												<img src="assets/img_web/Typ_A_Pôdorys.jpg" alt="">
-											</label>
-										</p>
-
-										<p class="radioOption-Item">
-											<input type="radio" name="floor_plan" id="planfloor2" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-											<label for="planfloor2">
-												<img src="assets/img_web/Typ_B_Pôdorys.jpg" alt="">
-											</label>
-										</p>
-
-										<p class="radioOption-Item">
-											<input type="radio" name="floor_plan" id="planfloor3" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-											<label for="planfloor3">
-												<img src="assets/img_web/Typ_C_Pôdorys.jpg" alt="">
-											</label>
-										</p>
-										<p class="radioOption-Item">
-											<input type="radio" name="floor_plan" id="planfloor4" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-											<label for="planfloor4">
-												<img src="assets/img_web/Typ_D_Pôdorys.jpg" alt="">
-											</label>
-										</p>
-										<p class="radioOption-Item">
-											<input type="radio" name="floor_plan" id="planfloor5" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-											<label for="planfloor5">
-												<img src="assets/img_web/ATYP_Konfigurácia_podľa_obrázka.jpg" alt="">
-											</label>
-										</p>
-									</div>
-								</div>
-								<div class="col-md-9"></div>
-								<div class="col-md-3">
-									<p class="tip1"><b>TIP</b>: V prvom kroku si vyberte pôdorys<br>
-										vstavanej skrine podľa toho,<br>
-										kde a ako bude umiestnená.</p>
-								</div>
-							</div>
-
-
-							<div class="field btns">
-								<button class="prev-1 prev">Previous</button>
-								<button class="next-1 next btn-green">Next</button>
-							</div>
-						</div>
-
-						<div class="page">
-							<div class="row">
-								<div class="col-md-9 mt-70">
-									<div class="account-details-form">
-										<div class="row">
-											<div class="col-md-3 d-flex flex-column justify-content-center">
-												<div class="align-items-center d-flex">
-													<label class="lbl_sides">Výška <br><small>ľavá predná</small></label>
-													<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25"> in cm
-												</div>
-											</div>
-											<div class="col-md-6">
-												<img src="assets/img_web/Parametre.png" class="img-fluid w-100" alt="">
-												<div class="depth1 form-inline">
-													<!-- <label>Depth</label> -->
-													<input type="text" placeholder="" id="" class="border-0 mx-1 para_depth2">
-												</div>
-												<div class="text-center">
-													<label>Šírka</label>
-													<input type="text" placeholder="" id="" class="para_width2 w49"> cm
-												</div>
-											</div>
-											<div class="col-md-3 d-flex flex-column justify-content-center">
-												<div class="align-items-center d-flex">
-													<label class="lbl_sides">Výška <br><small>pravá predná</small></label>
-													<input type="text" placeholder="" id="" class="w-25 para_rfh2 mx-1"> in cm
-												</div>
-											</div>
-											<div class="col-md-1"></div>
-											<div class="col-md-9">
-												<h4>Rozmery</h4>
-												<div class="row tabDiv2">
-													<div class="col-md-6">
-														<div class="row">
-															<div class="col align-items-center d-flex">
-																<label class="lbl_sides font-weight-bold">Výška <br><small>ľavá predná</small></label>
-																<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25"> cm
-															</div>
-															<div class="col align-items-center d-flex">
-																<label class="lbl_sides font-weight-bold">Výška <br><small>pravá predná</small></label>
-																<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25"> cm
-															</div>
-														</div>
-													</div>
-													<div class="col-md-3 bd_left_right">
-														<div class="text-center">
-															<label class="font-weight-bold">Šírka</label>
-															<input type="text" placeholder="" id="" class="para_width2 w-25"> cm
-														</div>
-													</div>
-													<div class="col-md-3">
-														<div class="text-center">
-															<label class="font-weight-bold">Hĺbka:</label>
-															<input type="text" placeholder="" id="" class="para_width2 w-25"> cm
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="tabDiv_right">
-										<h4 class="font-weight-bold">Rozmery</h4>
-										<div class="row">
-											<div class="col-md-6 d-flex justify-content-between">
-												<label class="font-weight-bold">Šírka&nbsp;</label>
-												<input type="text" placeholder="" id="" class="para_width2 w-25 h30"> cm
-											</div>
-											<div class="col-md-6 d-flex justify-content-between">
-												<label class="lbl_sides font-weight-bold">Výška <br><small>ľavá predná</small></label>
-												<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25 h30"> cm
-											</div>
-
-											<div class="col-md-6 d-flex justify-content-between">
-												<label class="font-weight-bold">Hĺbka</label>
-												<input type="text" placeholder="" id="" class="para_width2 w-25 h30"> cm
-											</div>
-											<div class="col-md-6 d-flex justify-content-between">
-												<label class="lbl_sides font-weight-bold">Výška <br><small>pravá predná</small></label>
-												<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25 h30">cm
-											</div>
-											<div class="col-md-6">
-												<h5 class="font-weight-bold mt-3">Interiér skrine</h5>
-												<p class="pb-50"></p>
-											</div>
-											<div class="col-md-6">
-												<h5 class="font-weight-bold mt-3">ABS</h5>
-												<p class="pb-50"></p>
-											</div>
-											<div class="col-md-6">
-												<h5 class="font-weight-bold mt-3">Bočná stena - lišta</h5>
-												<p class="pb-50"></p>
-											</div>
-											<div class="col-md-6">
-												<h5 class="font-weight-bold mt-3">Profil</h5>
-												<p class="pb-50"></p>
-											</div>
-											<div class="col-md-6">
-												<h5 class="font-weight-bold mt-3">Výplne dvier</h5>
-												<p class="pb-50"></p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div class="field btns">
-								<button class="prev-1 prev">Previous</button>
-								<button class="next-1 next btn-green">Next</button>
-							</div>
-						</div>
-
-						<div class="page">
-							<div class="row">
-								<div class="col-md-9 mt-70">
-									<div class="account-details-form">
-										<div class="row">
-											<div class="col-md-3 d-flex flex-column justify-content-center">
-												<!-- <div class="align-items-center d-flex">
-													<label class="lbl_sides">Výška <br><small>ľavá predná</small></label>
-													<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25"> in cm
-												</div> -->
-											</div>
-											<div class="col-md-6">
-												<img src="assets/img_web/tab3_img.png" class="img-fluid w-100" alt="">
-												<div class="depth1 form-inline">
-													<!-- <label>Depth</label> -->
-													<!-- <input type="text" placeholder="" id="" class="border-0 mx-1 para_depth2"> -->
-												</div>
-												<div class="text-center mt-4">
-													<label>Šírka</label>
-													<input type="text" placeholder="" id="" class="para_width2 w49"> cm
-												</div>
-											</div>
-											<div class="col-md-3 d-flex flex-column justify-content-center">
-												<!-- <div class="align-items-center d-flex">
-													<label class="lbl_sides">Výška <br><small>pravá predná</small></label>
-													<input type="text" placeholder="" id="" class="w-25 para_rfh2 mx-1"> in cm
-												</div> -->
-											</div>
-											<div class="col-md-1"></div>
-											<div class="col-md-9">
-												<h4>Počet priestorov</h4>
-
-												<div class="row tabDiv2">
-													<div class="col-md-12 p-0">
-														<div class="radio_container">
-															<input type="radio" name="radio" id="one_priestorov" checked>
-															<label for="one_priestorov" class="col lbl_sides font-weight-bold mb-0">1 časť &nbsp;<small class="font14">135 cm</small></label>
-
-															<input type="radio" name="radio" id="two_one_priestorov">
-															<label for="two_one_priestorov" class="col lbl_sides font-weight-bold mb-0">2 časť &nbsp;<small class="font14">135 cm</small></label>
-
-															<input type="radio" name="radio" id="three_priestorov">
-															<label for="three_priestorov" class="col lbl_sides font-weight-bold mb-0">3 časť &nbsp;<small class="font14">135 cm</small></label>
-															
-															<input type="radio" name="radio" id="four_priestorov">
-															<label for="four_priestorov" class="col lbl_sides font-weight-bold mb-0">4 časť &nbsp;<small class="font14">135 cm</small></label>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-md-12">
-												<button type="button" class="btn btn-danger Dalej_btn">Ďalej</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="tabDiv_right">
-										<h4 class="font-weight-bold">Rozmery</h4>
-										<div class="row">
-											<div class="col-md-6 d-flex justify-content-between">
-												<label class="font-weight-bold">Šírka&nbsp;</label>
-												<input type="text" placeholder="" id="" class="para_width2 w-25 h30"> cm
-											</div>
-											<div class="col-md-6 d-flex justify-content-between">
-												<label class="lbl_sides font-weight-bold">Výška <br><small>ľavá predná</small></label>
-												<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25 h30"> cm
-											</div>
-
-											<div class="col-md-6 d-flex justify-content-between">
-												<label class="font-weight-bold">Hĺbka</label>
-												<input type="text" placeholder="" id="" class="para_width2 w-25 h30"> cm
-											</div>
-											<div class="col-md-6 d-flex justify-content-between">
-												<label class="lbl_sides font-weight-bold">Výška <br><small>pravá predná</small></label>
-												<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25 h30">cm
-											</div>
-											<div class="col-md-6">
-												<h5 class="font-weight-bold mt-3">Drevodekor</h5>
-												<p class="pb-50"></p>
-											</div>
-											<div class="col-md-6">
-												<h5 class="font-weight-bold mt-3">ABS</h5>
-												<p class="pb-50"></p>
-											</div>
-											<div class="col-md-6">
-												<h5 class="font-weight-bold mt-3">Dorazová lišta</h5>
-												<p class="pb-50"></p>
-											</div>
-											<div class="col-md-6">
-												<h5 class="font-weight-bold mt-3">Profil</h5>
-												<p class="pb-50"></p>
-											</div>
-											<div class="col-md-6">
-												<h5 class="font-weight-bold mt-3">Výplne dvier</h5>
-												<p class="pb-50"></p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- <div class="title">NO. OF DOORS:</div>
+							<div class="title">NO. OF DOORS:</div>
 							<p>Please select the number of doors you would like for your wardrobe.</p>
 							<div class="form-group">
 								<label for="numDoors">NUMBER OF DOORS</label>
@@ -472,7 +959,7 @@
 									<option>3 Doors</option>
 									<option>4 Doors</option>
 								</select>
-							</div> -->
+							</div>
 							<div class="field btns">
 								<button class="prev-2 prev">Previous</button>
 								<button class="next-2 next btn-green">Next</button>
@@ -480,374 +967,260 @@
 						</div>
 
 						<div class="page">
-							<div class="row">
-								<div class="col-md-9 mt-70">
-									<div class="account-details-form">
-										<div class="row">
-											<div class="col-md-3 d-flex flex-column justify-content-center">
-												<!-- <div class="align-items-center d-flex">
-													<label class="lbl_sides">Výška <br><small>ľavá predná</small></label>
-													<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25"> in cm
-												</div> -->
-											</div>
-											<div class="col-md-8">
-												<img src="assets/img_web/img_tab4.png" class="img-fluid w-100" alt="">
-												<div class="depth1 form-inline">
-													<!-- <label>Depth</label> -->
-													<!-- <input type="text" placeholder="" id="" class="border-0 mx-1 para_depth2"> -->
-												</div>
-												<!-- <div class="text-center mt-4">
-													<label>Šírka</label>
-													<input type="text" placeholder="" id="" class="para_width2 w49"> cm
-												</div> -->
-											</div>
-											<div class="col-md-2 d-flex flex-column justify-content-center">
-												<!-- <div class="align-items-center d-flex">
-													<label class="lbl_sides">Výška <br><small>pravá predná</small></label>
-													<input type="text" placeholder="" id="" class="w-25 para_rfh2 mx-1"> in cm
-												</div> -->
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="tabDiv_right">
-										<h4 class="font-weight-bold">Rozmery</h4>
-										<div class="row">
-											<div class="col-md-6 d-flex justify-content-between">
-												<label class="font-weight-bold">Šírka&nbsp;</label>
-												<input type="text" placeholder="" id="" class="para_width2 w-25 h30"> cm
-											</div>
-											<div class="col-md-6 d-flex justify-content-between">
-												<label class="lbl_sides font-weight-bold">Výška <br><small>ľavá predná</small></label>
-												<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25 h30"> cm
-											</div>
-
-											<div class="col-md-6 d-flex justify-content-between">
-												<label class="font-weight-bold">Hĺbka</label>
-												<input type="text" placeholder="" id="" class="para_width2 w-25 h30"> cm
-											</div>
-											<div class="col-md-6 d-flex justify-content-between">
-												<label class="lbl_sides font-weight-bold">Výška <br><small>pravá predná</small></label>
-												<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25 h30">cm
-											</div>
-											<div class="col-md-6">
-												<h5 class="font-weight-bold mt-3">Drevodekor</h5>
-												<div></div>
-												<p class="pb-50"></p>
-											</div>
-											<div class="col-md-6">
-												<h5 class="font-weight-bold mt-3">ABS</h5>
-												<p class="pb-50"></p>
-											</div>
-											<div class="col-md-6">
-												<h5 class="font-weight-bold mt-3">Dorazová lišta</h5>
-												<p class="pb-50"></p>
-											</div>
-											<div class="col-md-6">
-												<h5 class="font-weight-bold mt-3">Profil</h5>
-												<p class="pb-50"></p>
-											</div>
-											<div class="col-md-6">
-												<h5 class="font-weight-bold mt-3">Výplne dvier</h5>
-												<p class="pb-50"></p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- <div class="title">NO. OF DOORS:</div>
-							<p>Please select the number of doors you would like for your wardrobe.</p>
-							<div class="form-group">
-								<label for="numDoors">NUMBER OF DOORS</label>
-								<select class="form-control" id="numDoors">
-									<option>3 Doors</option>
-									<option>4 Doors</option>
-								</select>
-							</div> -->
-							<div class="field btns">
-								<button class="prev-2 prev">Previous</button>
-								<button class="next-2 next btn-green">Next</button>
-							</div>
-						</div>
-
-						<div class="page">
-							<div class="title">FOLDING THE INTERIOR:</div>
+							<div class="title">DOOR PANEL DESIGN:</div>
 							<p>Select your panel design for each door.</p>
-							<div class="row">
-								<div class="col-md-6">
-									<table class="grid_center">
-										<tr>
-											<td>
-												<div class="cust_width"></div>
-											</td>
-											<td>
-												<div class="cust_width"></div>
-											</td>
-											<td>
-												<div class="cust_width"></div>
-											</td>
-										</tr>
-									</table>
+							<div class="accordion" id="accordionDoor">
+								<div class="border-bottom card mb-2">
+									<div class="card-header" id="doorOne" data-toggle="collapse" data-target="#collapseDoor1" aria-expanded="true" aria-controls="collapseDoor1">
+										<h4 class="mb-0">Door 1</h4>
+									</div>
+
+									<div id="collapseDoor1" class="collapse show" aria-labelledby="doorOne" data-parent="#accordionDoor">
+										<div class="card-body">
+											<div class="radio-with-Icon">
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel1" id="door1_1" value="true" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door1_1">
+														<img src="assets/img_web/gsh1.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel1" id="door1_2" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door1_2">
+														<img src="assets/img_web/gsh2.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel1" id="door1_3" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door1_3">
+														<img src="assets/img_web/gsh3.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel1" id="door1_4" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door1_4">
+														<img src="assets/img_web/gsh4.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel1" id="door1_5" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door1_5">
+														<img src="assets/img_web/gsh5.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel1" id="door1_6" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door1_6">
+														<img src="assets/img_web/gsh8.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel1" id="door1_7" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door1_7">
+														<img src="assets/img_web/gsh11.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel1" id="door1_8" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door1_8">
+														<img src="assets/img_web/gsh12.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel1" id="door1_9" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door1_9">
+														<img src="assets/img_web/gsh14.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel1" id="door1_10" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door1_10">
+														<img src="assets/img_web/gsv1.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel1" id="door1_11" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door1_11">
+														<img src="assets/img_web/gsv3.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel1" id="door1_12" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door1_12">
+														<img src="assets/img_web/gsv4.png" alt="">
+													</label>
+												</p>
+											</div>
+										</div>
+									</div>
 								</div>
-
-								<div class="col-md-6">
-									<div class="accordion" id="accordionDoor">
-										<div class="border-bottom card mb-2">
-											<div class="card-header" id="doorOne" data-toggle="collapse" data-target="#collapseDoor1" aria-expanded="true" aria-controls="collapseDoor1">
-												<h4 class="mb-0">Long hanging</h4>
-											</div>
-
-											<div id="collapseDoor1" class="collapse" aria-labelledby="doorOne" data-parent="#accordionDoor">
-												<div class="card-body">
-													<div class="radio-with-Icon">
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_1" value="true" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_1">
-																<img src="assets/img_web/Long_hanging1.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_2" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_2">
-																<img src="assets/img_web/gsh2.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_3" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_3">
-																<img src="assets/img_web/gsh3.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_4" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_4">
-																<img src="assets/img_web/gsh4.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_5" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_5">
-																<img src="assets/img_web/gsh5.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_6" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_6">
-																<img src="assets/img_web/gsh8.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_7" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_7">
-																<img src="assets/img_web/gsh11.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_8" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_8">
-																<img src="assets/img_web/gsh12.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_9" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_9">
-																<img src="assets/img_web/gsh14.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_10" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_10">
-																<img src="assets/img_web/gsv1.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_11" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_11">
-																<img src="assets/img_web/gsv3.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_12" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_12">
-																<img src="assets/img_web/gsv4.png" alt="" class="select_imgs">
-															</label>
-														</p>
-													</div>
-												</div>
+								<div class="border-bottom card mb-2">
+									<div class="card-header" id="doorTwo" data-toggle="collapse" data-target="#collapseDoor2" aria-expanded="false" aria-controls="collapseDoor2">
+										<h4 class="mb-0">Door 2</h4>
+									</div>
+									<div id="collapseDoor2" class="collapse" aria-labelledby="doorTwo" data-parent="#accordionDoor">
+										<div class="card-body">
+											<div class="radio-with-Icon">
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel2" id="door2_1" value="true" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door2_1">
+														<img src="assets/img_web/gsh1.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel2" id="door2_2" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door2_2">
+														<img src="assets/img_web/gsh2.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel2" id="door2_3" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door2_3">
+														<img src="assets/img_web/gsh3.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel2" id="door2_4" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door2_4">
+														<img src="assets/img_web/gsh4.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel2" id="door2_5" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door2_5">
+														<img src="assets/img_web/gsh5.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel2" id="door2_6" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door2_6">
+														<img src="assets/img_web/gsh8.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel2" id="door2_7" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door2_7">
+														<img src="assets/img_web/gsh11.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel2" id="door2_8" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door2_8">
+														<img src="assets/img_web/gsh12.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel2" id="door2_9" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door2_9">
+														<img src="assets/img_web/gsh14.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel2" id="door2_10" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door2_10">
+														<img src="assets/img_web/gsv1.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel2" id="door2_11" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door2_11">
+														<img src="assets/img_web/gsv3.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel2" id="door2_12" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door2_12">
+														<img src="assets/img_web/gsv4.png" alt="">
+													</label>
+												</p>
 											</div>
 										</div>
-										<div class="border-bottom card mb-2">
-											<div class="card-header" id="doorTwo" data-toggle="collapse" data-target="#collapseDoor2" aria-expanded="false" aria-controls="collapseDoor2">
-												<h4 class="mb-0">Short suspension</h4>
-											</div>
-											<div id="collapseDoor2" class="collapse" aria-labelledby="doorTwo" data-parent="#accordionDoor">
-												<div class="card-body">
-													<div class="radio-with-Icon">
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel2" id="door2_1" value="true" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door2_1">
-																<img src="assets/img_web/gsh1.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel2" id="door2_2" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door2_2">
-																<img src="assets/img_web/gsh2.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel2" id="door2_3" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door2_3">
-																<img src="assets/img_web/gsh3.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel2" id="door2_4" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door2_4">
-																<img src="assets/img_web/gsh4.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel2" id="door2_5" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door2_5">
-																<img src="assets/img_web/gsh5.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel2" id="door2_6" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door2_6">
-																<img src="assets/img_web/gsh8.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel2" id="door2_7" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door2_7">
-																<img src="assets/img_web/gsh11.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel2" id="door2_8" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door2_8">
-																<img src="assets/img_web/gsh12.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel2" id="door2_9" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door2_9">
-																<img src="assets/img_web/gsh14.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel2" id="door2_10" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door2_10">
-																<img src="assets/img_web/gsv1.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel2" id="door2_11" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door2_11">
-																<img src="assets/img_web/gsv3.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel2" id="door2_12" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door2_12">
-																<img src="assets/img_web/gsv4.png" alt="">
-															</label>
-														</p>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="border-bottom card mb-2">
-											<div class="card-header" id="doorThree" data-toggle="collapse" data-target="#collapseDoor3" aria-expanded="false" aria-controls="collapseDoor3">
-												<h4 class="mb-0">Combined suspension</h4>
-											</div>
-											<div id="collapseDoor3" class="collapse" aria-labelledby="doorThree" data-parent="#accordionDoor">
-												<div class="card-body">
-													<div class="radio-with-Icon">
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel3" id="door3_1" value="true" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door3_1">
-																<img src="assets/img_web/gsh1.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel3" id="door3_2" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door3_2">
-																<img src="assets/img_web/gsh2.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel3" id="door3_3" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door3_3">
-																<img src="assets/img_web/gsh3.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel3" id="door3_4" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door3_4">
-																<img src="assets/img_web/gsh4.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel3" id="door3_5" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door3_5">
-																<img src="assets/img_web/gsh5.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel3" id="door3_6" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door3_6">
-																<img src="assets/img_web/gsh8.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel3" id="door3_7" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door3_7">
-																<img src="assets/img_web/gsh11.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel3" id="door3_8" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door3_8">
-																<img src="assets/img_web/gsh12.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel3" id="door3_9" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door3_9">
-																<img src="assets/img_web/gsh14.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel3" id="door3_10" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door3_10">
-																<img src="assets/img_web/gsv1.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel3" id="door3_11" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door3_11">
-																<img src="assets/img_web/gsv3.png" alt="">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel3" id="door3_12" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door3_12">
-																<img src="assets/img_web/gsv4.png" alt="">
-															</label>
-														</p>
-													</div>
-												</div>
+									</div>
+								</div>
+								<div class="border-bottom card mb-2">
+									<div class="card-header" id="doorThree" data-toggle="collapse" data-target="#collapseDoor3" aria-expanded="false" aria-controls="collapseDoor3">
+										<h4 class="mb-0">Door 3</h4>
+									</div>
+									<div id="collapseDoor3" class="collapse" aria-labelledby="doorThree" data-parent="#accordionDoor">
+										<div class="card-body">
+											<div class="radio-with-Icon">
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel3" id="door3_1" value="true" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door3_1">
+														<img src="assets/img_web/gsh1.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel3" id="door3_2" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door3_2">
+														<img src="assets/img_web/gsh2.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel3" id="door3_3" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door3_3">
+														<img src="assets/img_web/gsh3.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel3" id="door3_4" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door3_4">
+														<img src="assets/img_web/gsh4.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel3" id="door3_5" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door3_5">
+														<img src="assets/img_web/gsh5.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel3" id="door3_6" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door3_6">
+														<img src="assets/img_web/gsh8.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel3" id="door3_7" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door3_7">
+														<img src="assets/img_web/gsh11.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel3" id="door3_8" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door3_8">
+														<img src="assets/img_web/gsh12.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel3" id="door3_9" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door3_9">
+														<img src="assets/img_web/gsh14.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel3" id="door3_10" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door3_10">
+														<img src="assets/img_web/gsv1.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel3" id="door3_11" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door3_11">
+														<img src="assets/img_web/gsv3.png" alt="">
+													</label>
+												</p>
+												<p class="radioOption-Item">
+													<input type="radio" name="doorPanel3" id="door3_12" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
+													<label for="door3_12">
+														<img src="assets/img_web/gsv4.png" alt="">
+													</label>
+												</p>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-
 							<div class="field btns">
 								<button class="prev-3 prev">Previous</button>
 								<button class="next-3 next btn-green">Next</button>
@@ -855,15 +1228,7 @@
 						</div>
 
 						<div class="page">
-							<div class="title mb-4">CHOOSING THE COLOR OF THE DECOR FOR THE INSIDE OF THE BUILT-IN CABINET</div>
-							<div class="align-items-center d-flex justify-content-center">
-								<div class="bg_image_ch">
-									<img src="assets/img_web/hand-click.png" alt="" class="border btn-default btn" data-toggle="modal" data-target="#woodColor">
-								</div>
-							</div>
-
-
-							<!-- <div class="title">DOOR PANEL MATERIAL:</div>
+							<div class="title">DOOR PANEL MATERIAL:</div>
 							<p>Select the material/colour for each panel of each door. MFC is a laminated wood product with matching edging to suit colour. Note, all glass is safety backed.</p>
 							<h4>DOOR 1</h4>
 							<div class="form-group row">
@@ -1172,7 +1537,7 @@
 										</optgroup>
 									</select>
 								</div>
-							</div> -->
+							</div>
 
 							<div class="field btns">
 								<button class="prev-4 prev">Previous</button>
@@ -1181,14 +1546,7 @@
 						</div>
 
 						<div class="page">
-							<div class="title mb-4">CHOOSING THE COLOR OF THE DECOR FOR THE VISIBLE PARTS OF THE BUILT-IN CABINET</div>
-							<div class="align-items-center d-flex justify-content-center">
-								<div class="bg_image_ch2">
-									<img src="assets/img_web/hand-click.png" alt="" class="border btn-default btn" data-toggle="modal" data-target="#visible_parts">
-								</div>
-							</div>
-
-							<!-- <div class="title">FRAME COLOURS:</div>
+							<div class="title">FRAME COLOURS:</div>
 							<p>Choose a frame colour from the range below.</p>
 
 							<h4>SELECT A FRAME COLOUR</h4>
@@ -1249,8 +1607,7 @@
 										White<br><br>
 									</label>
 								</p>
-							</div> -->
-
+							</div>
 							<div class="field btns">
 								<button class="prev-5 prev">Previous</button>
 								<button class="next-5 next btn-green">Next</button>
@@ -1258,116 +1615,7 @@
 						</div>
 
 						<div class="page">
-							<div class="title mb-4">CHOOSING THE DOOR TYPE</div>
-							<div class="row">
-								<div class="col-md-6">
-									<table class="grid_center">
-										<tr>
-											<td>
-												<div class="cust_width"></div>
-											</td>
-											<td>
-												<div class="cust_width"></div>
-											</td>
-											<td>
-												<div class="cust_width"></div>
-											</td>
-										</tr>
-									</table>
-								</div>
-
-								<div class="col-md-6">
-									<div class="accordion" id="accordionDoorType">
-										<div class="border-bottom card mb-2">
-											<div class="card-header" id="doorOne" data-toggle="collapse" data-target="#collapseDoor1" aria-expanded="true" aria-controls="collapseDoor1">
-												<h4 class="mb-0">List of door types</h4>
-											</div>
-
-											<div id="collapseDoor1" class="collapse" aria-labelledby="doorOne" data-parent="#accordionDoorType">
-												<div class="card-body">
-													<div class="radio-with-Icon">
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_1" value="true" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_1">
-																<img src="assets/img_web/Long_hanging1.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_2" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_2">
-																<img src="assets/img_web/gsh2.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_3" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_3">
-																<img src="assets/img_web/gsh3.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_4" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_4">
-																<img src="assets/img_web/gsh4.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_5" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_5">
-																<img src="assets/img_web/gsh5.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_6" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_6">
-																<img src="assets/img_web/gsh8.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_7" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_7">
-																<img src="assets/img_web/gsh11.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_8" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_8">
-																<img src="assets/img_web/gsh12.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_9" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_9">
-																<img src="assets/img_web/gsh14.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_10" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_10">
-																<img src="assets/img_web/gsv1.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_11" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_11">
-																<img src="assets/img_web/gsv3.png" alt="" class="select_imgs">
-															</label>
-														</p>
-														<p class="radioOption-Item">
-															<input type="radio" name="doorPanel1" id="door1_12" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
-															<label for="door1_12">
-																<img src="assets/img_web/gsv4.png" alt="" class="select_imgs">
-															</label>
-														</p>
-													</div>
-												</div>
-											</div>
-										</div>
-
-									</div>
-								</div>
-							</div>
-
-							<!-- <div class="title">END PANELS:</div>
+							<div class="title">END PANELS:</div>
 							<p>End panels are required if you won’t have a wall either side of your wardrobe. The end panel forms a side for your wardrobe where a wall can’t be used. Please select quantity needed below.</p>
 							<div class="form-group">
 								<label for="endPanels">DO YOU REQUIRE END PANELS?</label>
@@ -1377,7 +1625,7 @@
 									<option value="Right only">Yes, right only</option>
 									<option value="Left and Right">Yes, left and right</option>
 								</select>
-							</div> -->
+							</div>
 							<div class="field btns">
 								<button class="prev-6 prev">Previous</button>
 								<button class="next-6 next btn-green">Next</button>
@@ -1914,197 +2162,6 @@
 </div>
 
 <?php include("include/footer.php"); ?>
-<!-- wood color Modal -->
-<div class="modal fade" id="woodColor" tabindex="-1" role="dialog" aria-labelledby="woodColorModal" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title" id="woodColorModal">Click to choose a fill</h4>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<div class="row">
-					<div class="col-md-3 mb-3 color_fill_ins" data-dismiss="modal" aria-label="Close">
-						<div class="border">
-							<img src="assets/img_web/ST9_Vanilla_yellow.jpg" alt="" class="w-h-252 inside_clr">
-						</div>
-						<div class="px-2 border">
-							<small>0108U</small>
-							<h5>ST9 Vanilla yellow</h5>
-						</div>
-					</div>
-					<div class="col-md-3 mb-3 color_fill_ins" data-dismiss="modal" aria-label="Close">
-						<div class="border">
-							<img src="assets/img_web/ST22_Fineline_cream.jpg" alt="" class="w-h-252 inside_clr">
-						</div>
-						<div class="px-2 border">
-							<small>1424H</small>
-							<h5>ST22 Fineline cream</h5>
-						</div>
-					</div>
-					<div class="col-md-3 mb-3 color_fill_ins" data-dismiss="modal" aria-label="Close">
-						<div class="border">
-							<img src="assets/img_web/ST9_Birch_Mainau.jpg" alt="" class="w-h-252 inside_clr">
-						</div>
-						<div class="px-2 border">
-							<small>1733H</small>
-							<h5>ST9 Birch Mainau</h5>
-						</div>
-					</div>
-					<div class="col-md-3 mb-3 color_fill_ins" data-dismiss="modal" aria-label="Close">
-						<div class="border">
-							<img src="assets/img_web/K080_White_Oak.jpg" alt="" class="w-h-252 inside_clr">
-						</div>
-						<div class="px-2 border">
-							<small>K080</small>
-							<h5>White Oak</h5>
-						</div>
-					</div>
-
-					<div class="col-md-3 mb-3 color_fill_ins" data-dismiss="modal" aria-label="Close">
-						<div class="border">
-							<img src="assets/img_web/ST9_Vanilla_yellow.jpg" alt="" class="w-h-252 inside_clr">
-						</div>
-						<div class="px-2 border">
-							<small>0108U</small>
-							<h5>ST9 Vanilla yellow</h5>
-						</div>
-					</div>
-					<div class="col-md-3 mb-3 color_fill_ins" data-dismiss="modal" aria-label="Close">
-						<div class="border">
-							<img src="assets/img_web/ST22_Fineline_cream.jpg" alt="" class="w-h-252 inside_clr">
-						</div>
-						<div class="px-2 border">
-							<small>1424H</small>
-							<h5>ST22 Fineline cream</h5>
-						</div>
-					</div>
-					<div class="col-md-3 mb-3 color_fill_ins" data-dismiss="modal" aria-label="Close">
-						<div class="border">
-							<img src="assets/img_web/ST9_Birch_Mainau.jpg" alt="" class="w-h-252 inside_clr">
-						</div>
-						<div class="px-2 border">
-							<small>1733H</small>
-							<h5>ST9 Birch Mainau</h5>
-						</div>
-					</div>
-					<div class="col-md-3 mb-3 color_fill_ins" data-dismiss="modal" aria-label="Close">
-						<div class="border">
-							<img src="assets/img_web/K080_White_Oak.jpg" alt="" class="w-h-252 inside_clr">
-						</div>
-						<div class="px-2 border">
-							<small>K080</small>
-							<h5>White Oak</h5>
-						</div>
-					</div>
-
-				</div>
-			</div>
-			<!-- <div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
-			</div> -->
-		</div>
-	</div>
-</div>
-
-<!-- VISIBLE PARTS Modal -->
-<div class="modal fade" id="visible_parts" tabindex="-1" role="dialog" aria-labelledby="visible_partsModal" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title" id="visible_partsModal">Click to choose a fill</h4>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<div class="row">
-					<div class="col-md-3 mb-3 color_fill_ins" data-dismiss="modal" aria-label="Close">
-						<div class="border">
-							<img src="assets/img_web/Ceresňa.jpg" alt="" class="w-h-252 inside_clr2">
-						</div>
-						<div class="px-2 border">
-							<small>0344 PR</small>
-							<h5>Ceresňa</h5>
-						</div>
-					</div>
-					<div class="col-md-3 mb-3 color_fill_ins" data-dismiss="modal" aria-label="Close">
-						<div class="border">
-							<img src="assets/img_web/Maple.jpg" alt="" class="w-h-252 inside_clr2">
-						</div>
-						<div class="px-2 border">
-							<small>0375 PR</small>
-							<h5>Maple</h5>
-						</div>
-					</div>
-					<div class="col-md-3 mb-3 color_fill_ins" data-dismiss="modal" aria-label="Close">
-						<div class="border">
-							<img src="assets/img_web/Beech_Bavaria.jpg" alt="" class="w-h-252 inside_clr2">
-						</div>
-						<div class="px-2 border">
-							<small>0381 PR</small>
-							<h5>Beech Bavaria</h5>
-						</div>
-					</div>
-					<div class="col-md-3 mb-3 color_fill_ins" data-dismiss="modal" aria-label="Close">
-						<div class="border">
-							<img src="assets/img_web/ST_9_Limetková.jpg" alt="" class="w-h-252 inside_clr2">
-						</div>
-						<div class="px-2 border">
-							<small>0630 U</small>
-							<h5>ST 9 Limetková</h5>
-						</div>
-					</div>
-
-					<div class="col-md-3 mb-3 color_fill_ins" data-dismiss="modal" aria-label="Close">
-						<div class="border">
-							<img src="assets/img_web/ST22_Whitewood.jpg" alt="" class="w-h-252 inside_clr2">
-						</div>
-						<div class="px-2 border">
-							<small>1122H</small>
-							<h5>ST22 Whitewood</h5>
-						</div>
-					</div>
-					<div class="col-md-3 mb-3 color_fill_ins" data-dismiss="modal" aria-label="Close">
-						<div class="border">
-							<img src="assets/img_web/ST12_Black_brown_Sorano_oak.jpg" alt="" class="w-h-252 inside_clr2">
-						</div>
-						<div class="px-2 border">
-							<small>1137H</small>
-							<h5>ST12 Black-brown Sorano oak</h5>
-						</div>
-					</div>
-					<div class="col-md-3 mb-3 color_fill_ins" data-dismiss="modal" aria-label="Close">
-						<div class="border">
-							<img src="assets/img_web/ST10_Bardolino_oak_natural.jpg" alt="" class="w-h-252 inside_clr2">
-						</div>
-						<div class="px-2 border">
-							<small>1145H</small>
-							<h5>ST10 Bardolino oak natural</h5>
-						</div>
-					</div>
-					<div class="col-md-3 mb-3 color_fill_ins" data-dismiss="modal" aria-label="Close">
-						<div class="border">
-							<img src="assets/img_web/ST36_Navarra_Ash.jpg" alt="" class="w-h-252 inside_clr2">
-						</div>
-						<div class="px-2 border">
-							<small>1250H</small>
-							<h5>ST36 Navarra Ash</h5>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-
-
-
 <script>
 	$(document).ready(function() {
 		$("#Built_in").click(function() {
@@ -2206,33 +2263,11 @@
 	}
 </script>
 
-<!-- <script>
+<script>
 	function parameter_width() {
 		let val_width = document.getElementById('para_width');
 		val_width.addEventListener('change', function() {
 			alert('you enterd:' + this.value);
 		})
 	}
-</script> -->
-<script>
-	$('.cust_width').click(function() {
-		$('.cust_width').removeClass('box_select');
-		$(this).addClass('box_select');
-	})
-	$('.select_imgs').click(function() {
-		var img = $(this).attr('src');
-		$('.box_select').html('<img src="' + img + '">');
-	})
-
-
-	$('.inside_clr').click(function() {
-		var img = $(this).attr('src');
-		// alert(img);
-		$('.bg_image_ch').css("background-image", "url(" + img + ")");
-	})
-
-	$('.inside_clr2').click(function() {
-		var img = $(this).attr('src');
-		$('.bg_image_ch2').css("background-image", "url(" + img + ")");
-	})
 </script>
