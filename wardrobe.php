@@ -1,6 +1,7 @@
 <?php include("include/header.php"); ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 <link rel="stylesheet" href="assets/css/built_in_cabinets.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
 
 <!-- <div class="breadcrumb-area breadcrumb-bg-1 pt-50 pb-70 mb-100">
 	<div class="container">
@@ -16,7 +17,7 @@
 	</div>
 </div> -->
 
-<img src="assets/img_web/denir.png" alt="" class="position-absolute w345">
+<!-- <img src="assets/img_web/denir.png" alt="" class="position-absolute w345">
 <div class="section-title-container mb-40">
 	<div class="container">
 		<div class="row">
@@ -28,39 +29,32 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 
-<div class="product-category-container mb-md-90 mb-sm-90 pb-1">
+<div class="product-category-container mb-md-90 mb-sm-90 pb-1 mt-10">
 	<div class="container wide">
-		<!-- <div class=""> -->
-		<!-- <div class="col-lg-6 col-md-6 col-12">
-				<div class="builder_img">
-					<img src="assets/img_web/image_w.jpg" alt="">
-				</div>
-			</div> -->
-		<!-- <div class=""> -->
 		<div class="row">
-			<div class="col-md-12">
-				<div class="progress-bar">
+			<div class="col-md-10">
+				<div class="progress-bar mt-35">
 					<div class="step">
-						<div class="bullet">
+						<div class="bullet bullet_first">
 							<span>Výber typu</span>
 						</div>
-						<div class="check fas fa-check"></div>
+						<!-- <div class="check fas fa-check"></div> -->
 					</div>
 
 					<div class="step">
 						<div class="bullet">
 							<span>Parametre</span>
 						</div>
-						<div class="check fas fa-check"></div>
+						<!-- <div class="check fas fa-check"></div> -->
 					</div>
 
 					<div class="step">
 						<div class="bullet">
 							<span>Skladanie vnútra</span>
 						</div>
-						<div class="check fas fa-check"></div>
+						<!-- <div class="check fas fa-check"></div> -->
 					</div>
 
 					<!-- <div class="step">
@@ -81,19 +75,56 @@
 						<div class="bullet">
 							<span>Výber dvier</span>
 						</div>
-						<div class="check fas fa-check"></div>
+						<!-- <div class="check fas fa-check"></div> -->
 					</div>
 
 					<div class="step">
 						<div class="bullet">
 							<span>Výplň dvier</span>
 						</div>
-						<div class="check fas fa-check"></div>
+						<!-- <div class="check fas fa-check"></div> -->
 					</div>
 
 					<div class="step">
-						<div class="bullet">
+						<div class="bullet bullet_six">
 							<span>Cena + objednávka</span>
+						</div>
+						<!-- <div class="check fas fa-check"></div> -->
+					</div>
+
+					<div class="step d-none">
+						<div class="bullet">
+							<span>new</span>
+						</div>
+						<div class="check fas fa-check"></div>
+					</div>
+					<div class="step d-none">
+						<div class="bullet">
+							<span>new</span>
+						</div>
+						<div class="check fas fa-check"></div>
+					</div>
+					<div class="step d-none">
+						<div class="bullet">
+							<span>new</span>
+						</div>
+						<div class="check fas fa-check"></div>
+					</div>
+					<div class="step d-none">
+						<div class="bullet">
+							<span>new</span>
+						</div>
+						<div class="check fas fa-check"></div>
+					</div>
+					<div class="step d-none">
+						<div class="bullet">
+							<span>new</span>
+						</div>
+						<div class="check fas fa-check"></div>
+					</div>
+					<div class="step d-none">
+						<div class="bullet">
+							<span>new</span>
 						</div>
 						<div class="check fas fa-check"></div>
 					</div>
@@ -141,21 +172,112 @@
 					</div> -->
 				</div>
 			</div>
+			<div class="col-md-2">
+				<button type="button" class="btn btn-danger tab9_btn font14 mb-10" data-toggle="modal" data-target="#modal_num1"><img src="assets/img_web/save_btn.png" alt=""> Uložiť konfiguráciu</button>
+				<button type="button" class="bg-white btn btn-danger font-weight-bold tab9_btn text-danger font14" data-toggle="modal" data-target="#modal_num2"><img src="assets/img_web/share_btn.png" alt=""> Zdieľať</button>
+			</div>
+		</div>
+	</div>
+	<div class="container wide">
+		<!-- <div class=""> -->
+		<!-- <div class="col-lg-6 col-md-6 col-12">
+				<div class="builder_img">
+					<img src="assets/img_web/image_w.jpg" alt="">
+				</div>
+			</div> -->
+		<!-- <div class=""> -->
+		<div class="row">
+			<!-- <div class="col-md-10">
+				<div class="progress-bar mt-35">
+					<div class="step">
+						<div class="bullet bullet_first">
+							<span>Výber typu</span>
+						</div>
+					</div>
+
+					<div class="step">
+						<div class="bullet">
+							<span>Parametre</span>
+						</div>
+					</div>
+
+					<div class="step">
+						<div class="bullet">
+							<span>Skladanie vnútra</span>
+						</div>
+					</div>
+
+					<div class="step">
+						<div class="bullet">
+							<span>Výber dvier</span>
+						</div>
+					</div>
+
+					<div class="step">
+						<div class="bullet">
+							<span>Výplň dvier</span>
+						</div>
+					</div>
+
+					<div class="step">
+						<div class="bullet bullet_six">
+							<span>Cena + objednávka</span>
+						</div>
+					</div>
+
+					<div class="step d-none">
+						<div class="bullet">
+							<span>new</span>
+						</div>
+						<div class="check fas fa-check"></div>
+					</div>
+					<div class="step d-none">
+						<div class="bullet">
+							<span>new</span>
+						</div>
+						<div class="check fas fa-check"></div>
+					</div>
+					<div class="step d-none">
+						<div class="bullet">
+							<span>new</span>
+						</div>
+						<div class="check fas fa-check"></div>
+					</div>
+					<div class="step d-none">
+						<div class="bullet">
+							<span>new</span>
+						</div>
+						<div class="check fas fa-check"></div>
+					</div>
+					<div class="step d-none">
+						<div class="bullet">
+							<span>new</span>
+						</div>
+						<div class="check fas fa-check"></div>
+					</div>
+					<div class="step d-none">
+						<div class="bullet">
+							<span>new</span>
+						</div>
+						<div class="check fas fa-check"></div>
+					</div>
+				</div>
+			</div> -->
+			<!-- <div class="col-md-2">
+				<button type="button" class="btn btn-danger tab9_btn font14 mb-10"><img src="assets/img_web/save_btn.png" alt=""> Uložiť konfiguráciu</button>
+				<button type="button" class="bg-white btn btn-danger font-weight-bold tab9_btn text-danger font14"><img src="assets/img_web/share_btn.png" alt=""> Zdieľať</button>
+			</div> -->
 
 
 			<div class="col-md-12">
 				<div class="form-outer">
 					<form action="#">
-						<div class="page slide-page">
-							<!-- <div class="title">Configurator for built-in cabinets</div> -->
-							<!-- <h4>Select a Range</h4> -->
+						<!-- <div class="page slide-page">
 							<div class="radio-with-Icon built_in_cabinets">
 								<p class="radioOption-Item thee_cabinets">
 									<input type="radio" name="range" id="BannerType1" value="true" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
 									<label for="BannerType1">
 										<img src="assets/img_web/Vstavaná_skriňa.jpg" alt="" class="thee_cabinets_img">
-										<!-- <i class="fa fa-image"></i> -->
-										<!-- Vstavaná skriňa -->
 										<span class="tab1_head">Vstavaná skriňa</span>
 									</label>
 								</p>
@@ -164,8 +286,6 @@
 									<input type="radio" name="range" id="BannerType2" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
 									<label for="BannerType2">
 										<img src="assets/img_web/Skrinka.jpg" alt="" class="thee_cabinets_img">
-										<!-- <i class="fa fa-image"></i> -->
-										<!-- Skrinka -->
 										<span class="tab1_head">Skrinka</span>
 									</label>
 								</p>
@@ -174,8 +294,6 @@
 									<input type="radio" name="range" id="BannerType3" value="false" class="ng-valid ng-dirty ng-touched ng-empty" aria-invalid="false" style="">
 									<label for="BannerType3">
 										<img src="assets/img_web/Ohranená_doska.jpg" alt="" class="thee_cabinets_img">
-										<!-- <i class="fa fa-image"></i> -->
-										<!-- Ohranená doska -->
 										<span class="tab1_head">Ohranená doska</span>
 									</label>
 								</p>
@@ -188,13 +306,15 @@
 								<button class="prev-1 prev">Previous</button>
 								<button class="next-1 next btn-green">Next</button>
 							</div>
-						</div>
+						</div> -->
 
-						<div class="page">
+						<!-- tab 1 -->
+
+						<div class="page slide-page">
 							<!-- <div class="title">Floor Plan</div> -->
 							<div class="row">
 								<div class="col-md-12 col-lg-12">
-									<button type="button" class="btn btn-basic Späť_btn"><i class="font-weight-bold icon mr-1 ti-arrow-left"></i> Späť</button>
+									<a href="configurator.php" class="btn btn-basic Späť_btn"><i class="font-weight-bold icon mr-1 ti-arrow-left"></i> Späť</a>
 								</div>
 								<div class="col-md-6 grid_center">
 									<img src="assets/img_web/Vstavaná_skriňa2.jpg" alt="">
@@ -245,10 +365,12 @@
 
 
 							<div class="field btns">
-								<button class="prev-1 prev">Previous</button>
+								<!-- <button class="prev-1 prev">Previous</button> -->
 								<button class="next-1 next btn-green">Next</button>
 							</div>
 						</div>
+
+						<!-- tab 2 -->
 
 						<div class="page">
 							<div class="row">
@@ -261,7 +383,7 @@
 													<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25"> in cm
 												</div>
 											</div>
-											<div class="col-md-6">
+											<div class="col-md-6 position-relative">
 												<img src="assets/img_web/Parametre.png" class="img-fluid w-100" alt="">
 												<div class="depth1 form-inline">
 													<!-- <label>Depth</label> -->
@@ -282,27 +404,27 @@
 											<div class="col-md-9">
 												<h4>Rozmery</h4>
 												<div class="row tabDiv2">
-													<div class="col-md-6">
+													<div class="col-md-6 py-1">
 														<div class="row">
 															<div class="col align-items-center d-flex">
-																<label class="lbl_sides font-weight-bold">Výška <br><small>ľavá predná</small></label>
+																<label class="lbl_sides font-weight-bold mb-0">Výška <br><small>ľavá predná</small></label>
 																<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25"> cm
 															</div>
 															<div class="col align-items-center d-flex">
-																<label class="lbl_sides font-weight-bold">Výška <br><small>pravá predná</small></label>
+																<label class="lbl_sides font-weight-bold mb-0">Výška <br><small>pravá predná</small></label>
 																<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25"> cm
 															</div>
 														</div>
 													</div>
-													<div class="col-md-3 bd_left_right">
+													<div class="col-md-3 bd_left_right py-1">
 														<div class="text-center">
-															<label class="font-weight-bold">Šírka</label>
+															<label class="font-weight-bold mb-0">Šírka</label>
 															<input type="text" placeholder="" id="" class="para_width2 w-25"> cm
 														</div>
 													</div>
-													<div class="col-md-3">
+													<div class="col-md-3 py-1">
 														<div class="text-center">
-															<label class="font-weight-bold">Hĺbka:</label>
+															<label class="font-weight-bold mb-0">Hĺbka:</label>
 															<input type="text" placeholder="" id="" class="para_width2 w-25"> cm
 														</div>
 													</div>
@@ -363,6 +485,8 @@
 							</div>
 						</div>
 
+						<!-- tab 3 -->
+
 						<div class="page">
 							<div class="row">
 								<div class="col-md-9 mt-70">
@@ -375,12 +499,15 @@
 												</div> -->
 											</div>
 											<div class="col-md-6">
-												<img src="assets/img_web/tab3_img.png" class="img-fluid w-100" alt="">
+												<!-- <img src="assets/img_web/tab3_img1.png" class="img-fluid w-100" alt=""> -->
+												<!-- <img src="assets/img_web/tab3_img2.png" class="img-fluid w-100" alt=""> -->
+												<img src="assets/img_web/tab3_img3.png" class="img-fluid w-100" alt="">
+												<!-- <img src="assets/img_web/tab3_img4.png" class="img-fluid w-100" alt=""> -->
 												<div class="depth1 form-inline">
 													<!-- <label>Depth</label> -->
 													<!-- <input type="text" placeholder="" id="" class="border-0 mx-1 para_depth2"> -->
 												</div>
-												<div class="text-center mt-4">
+												<div class="text-center mt-3">
 													<label>Šírka</label>
 													<input type="text" placeholder="" id="" class="para_width2 w49"> cm
 												</div>
@@ -406,7 +533,7 @@
 
 															<input type="radio" name="radio" id="three_priestorov">
 															<label for="three_priestorov" class="col lbl_sides font-weight-bold mb-0">3 časť &nbsp;<small class="font14">135 cm</small></label>
-															
+
 															<input type="radio" name="radio" id="four_priestorov">
 															<label for="four_priestorov" class="col lbl_sides font-weight-bold mb-0">4 časť &nbsp;<small class="font14">135 cm</small></label>
 														</div>
@@ -479,35 +606,63 @@
 							</div>
 						</div>
 
+						<!-- tab 4 -->
+
 						<div class="page">
 							<div class="row">
-								<div class="col-md-9 mt-70">
+								<div class="col-md-9 mt-20">
 									<div class="account-details-form">
 										<div class="row">
 											<div class="col-md-3 d-flex flex-column justify-content-center">
-												<!-- <div class="align-items-center d-flex">
-													<label class="lbl_sides">Výška <br><small>ľavá predná</small></label>
-													<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25"> in cm
-												</div> -->
 											</div>
 											<div class="col-md-8">
-												<img src="assets/img_web/img_tab4.png" class="img-fluid w-100" alt="">
+												<img src="assets/img_web/img_tab4.png" class="img-fluid w-75" alt="">
 												<div class="depth1 form-inline">
-													<!-- <label>Depth</label> -->
-													<!-- <input type="text" placeholder="" id="" class="border-0 mx-1 para_depth2"> -->
 												</div>
-												<!-- <div class="text-center mt-4">
-													<label>Šírka</label>
-													<input type="text" placeholder="" id="" class="para_width2 w49"> cm
-												</div> -->
 											</div>
 											<div class="col-md-2 d-flex flex-column justify-content-center">
-												<!-- <div class="align-items-center d-flex">
-													<label class="lbl_sides">Výška <br><small>pravá predná</small></label>
-													<input type="text" placeholder="" id="" class="w-25 para_rfh2 mx-1"> in cm
-												</div> -->
 											</div>
-											
+										</div>
+										<div class="container mt-20">
+											<div class="swiper-container pl-25 pr-25">
+												<!-- Additional required wrapper -->
+												<div class="swiper-wrapper">
+													<div class="swiper-slide">
+														<img src="assets/img_web/interior_img_1.png" alt="" class="folding_inside_img">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/interior_img_1.png" alt="" class="folding_inside_img">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/interior_img_1.png" alt="" class="folding_inside_img">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/interior_img_1.png" alt="" class="folding_inside_img">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/interior_img_1.png" alt="" class="folding_inside_img">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/interior_img_1.png" alt="" class="folding_inside_img">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/interior_img_1.png" alt="" class="folding_inside_img">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/interior_img_1.png" alt="" class="folding_inside_img">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/interior_img_1.png" alt="" class="folding_inside_img">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/interior_img_1.png" alt="" class="folding_inside_img">
+													</div>
+												</div>
+
+												<!-- If we need navigation buttons -->
+												<div class="swiper-button-prev"></div>
+												<div class="swiper-button-next"></div>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -533,43 +688,1076 @@
 												<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25 h30">cm
 											</div>
 											<div class="col-md-6">
-												<h5 class="font-weight-bold mt-3">Drevodekor</h5>
-												<div></div>
-												<p class="pb-50"></p>
+												<h5 class="font-weight-bold mt-2">Drevodekor</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Dub Kansas Hnedý</h6>
+												</div>
 											</div>
 											<div class="col-md-6">
-												<h5 class="font-weight-bold mt-3">ABS</h5>
-												<p class="pb-50"></p>
+												<h5 class="font-weight-bold mt-2">ABS</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Dub Kansas Hnedý</h6>
+												</div>
 											</div>
 											<div class="col-md-6">
-												<h5 class="font-weight-bold mt-3">Dorazová lišta</h5>
-												<p class="pb-50"></p>
+												<h5 class="font-weight-bold mt-2">Dorazová lišta</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Dub Kansas Hnedý</h6>
+												</div>
 											</div>
 											<div class="col-md-6">
-												<h5 class="font-weight-bold mt-3">Profil</h5>
-												<p class="pb-50"></p>
+												<h5 class="font-weight-bold mt-2">Profil</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Hliník - Biely</h6>
+												</div>
 											</div>
-											<div class="col-md-6">
-												<h5 class="font-weight-bold mt-3">Výplne dvier</h5>
-												<p class="pb-50"></p>
+											<div class="col-md-12">
+												<h5 class="font-weight-bold mt-2">Výplne dvier</h5>
+												<div class="row">
+													<div class="col-md-4">
+														<div class="card p-1">
+															<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="card p-1">
+															<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="card p-1">
+															<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+														</div>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
+									<p class="tip1 mt-20"><b>TIP</b>: Pri dverách delených na polovicu,<br>
+										tretinu resp. na pätinu si môžete<br>
+										ľubovoľne zmeniť výšku deliaceho priestoru.</p>
 								</div>
 							</div>
-							<!-- <div class="title">NO. OF DOORS:</div>
-							<p>Please select the number of doors you would like for your wardrobe.</p>
-							<div class="form-group">
-								<label for="numDoors">NUMBER OF DOORS</label>
-								<select class="form-control" id="numDoors">
-									<option>3 Doors</option>
-									<option>4 Doors</option>
-								</select>
-							</div> -->
 							<div class="field btns">
 								<button class="prev-2 prev">Previous</button>
 								<button class="next-2 next btn-green">Next</button>
 							</div>
+						</div>
+
+						<!-- tab 5 -->
+
+						<div class="page">
+							<div class="row">
+								<div class="col-md-9 mt-20">
+									<div class="account-details-form">
+
+										<div class="col-md-6 mx-auto">
+											<table class="grid_center">
+												<tr>
+													<td>
+														<div class="cust_width cust_border_0">
+															<img src="assets/img_web/tab5_img.jpg" class="img-fluid" alt="">
+														</div>
+													</td>
+													<td>
+														<div class="cust_width cust_border_0">
+															<img src="assets/img_web/tab5_img.jpg" class="img-fluid" alt="">
+														</div>
+													</td>
+													<td>
+														<div class="cust_width cust_border_0">
+															<img src="assets/img_web/tab5_img.jpg" class="img-fluid" alt="">
+														</div>
+													</td>
+													<td>
+														<div class="cust_width cust_border_0">
+															<img src="assets/img_web/tab5_img.jpg" class="img-fluid" alt="">
+														</div>
+													</td>
+												</tr>
+											</table>
+											<div class="depth1 form-inline">
+											</div>
+										</div>
+
+										<div class="container mt-20">
+											<div class="px-5 mb-5">
+												<h5 class="m-0">Dub Kansas</h5>
+												<small>001 - EGER 5</small>
+											</div>
+											<div class="swiper-container pl-25 pr-25 py-4">
+												<!-- Additional required wrapper -->
+												<div class="swiper-wrapper">
+													<div class="swiper-slide d-flex flex-column">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="mb-20 zoom">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="zoom">
+													</div>
+													<div class="swiper-slide d-flex flex-column">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="mb-20 zoom">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="zoom">
+													</div>
+													<div class="swiper-slide d-flex flex-column">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="mb-20 zoom">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="zoom">
+													</div>
+													<div class="swiper-slide d-flex flex-column">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="mb-20 zoom">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="zoom">
+													</div>
+													<div class="swiper-slide d-flex flex-column">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="mb-20 zoom">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="zoom">
+													</div>
+													<div class="swiper-slide d-flex flex-column">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="mb-20 zoom">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="zoom">
+													</div>
+													<div class="swiper-slide d-flex flex-column">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="mb-20 zoom">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="zoom">
+													</div>
+													<div class="swiper-slide d-flex flex-column">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="mb-20 zoom">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="zoom">
+													</div>
+													<div class="swiper-slide d-flex flex-column">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="mb-20 zoom">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="zoom">
+													</div>
+													<div class="swiper-slide d-flex flex-column">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="mb-20 zoom">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="zoom">
+													</div>
+												</div>
+
+												<!-- If we need navigation buttons -->
+												<div class="swiper-button-prev"></div>
+												<div class="swiper-button-next"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="tabDiv_right">
+										<h4 class="font-weight-bold">Rozmery</h4>
+										<div class="row">
+											<div class="col-md-6 d-flex justify-content-between">
+												<label class="font-weight-bold">Šírka&nbsp;</label>
+												<input type="text" placeholder="" id="" class="para_width2 w-25 h30"> cm
+											</div>
+											<div class="col-md-6 d-flex justify-content-between">
+												<label class="lbl_sides font-weight-bold">Výška <br><small>ľavá predná</small></label>
+												<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25 h30"> cm
+											</div>
+
+											<div class="col-md-6 d-flex justify-content-between">
+												<label class="font-weight-bold">Hĺbka</label>
+												<input type="text" placeholder="" id="" class="para_width2 w-25 h30"> cm
+											</div>
+											<div class="col-md-6 d-flex justify-content-between">
+												<label class="lbl_sides font-weight-bold">Výška <br><small>pravá predná</small></label>
+												<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25 h30">cm
+											</div>
+											<div class="col-md-6">
+												<h5 class="font-weight-bold mt-3">Drevodekor...</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Dub Kansas Hnedý</h6>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<h5 class="font-weight-bold mt-3">ABS</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Dub Kansas Hnedý</h6>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<h5 class="font-weight-bold mt-3">Dorazová lišta</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Dub Kansas Hnedý</h6>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<h5 class="font-weight-bold mt-3">Profil</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Hliník - Biely</h6>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<h5 class="font-weight-bold mt-3">Výplne dvier</h5>
+												<div class="row">
+													<div class="col-md-4">
+														<div class="card p-1">
+															<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="card p-1">
+															<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="card p-1">
+															<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<p class="tip1 mt-20"><b>TIP</b>: Pri dverách delených na polovicu,<br>
+										tretinu resp. na pätinu si môžete<br>
+										ľubovoľne zmeniť výšku deliaceho priestoru.</p>
+								</div>
+							</div>
+							<div class="field btns">
+								<button class="prev-2 prev">Previous</button>
+								<button class="next-2 next btn-green">Next</button>
+							</div>
+						</div>
+
+						<!-- tab 6 -->
+
+						<div class="page">
+							<div class="row">
+								<div class="col-md-9 mt-20">
+									<!-- <center>
+										<small>Pohľad zhora</small>
+									</center> -->
+									<div class="account-details-form">
+										<div class="row">
+											<div class="col-md-3 d-flex flex-column justify-content-center">
+												<div class="align-items-center d-flex">
+													<label class="lbl_sides">Výška <br><small>ľavá predná</small></label>
+													<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25"> cm
+												</div>
+											</div>
+											<div class="col-md-5">
+												<table class="grid_center">
+													<tr>
+														<td>
+															<div class="cust_width cust_border_0">
+																<img src="assets/img_web/tab5_img.jpg" class="img-fluid" alt="">
+															</div>
+														</td>
+														<td>
+															<div class="cust_width cust_border_0">
+																<img src="assets/img_web/tab5_img.jpg" class="img-fluid" alt="">
+															</div>
+														</td>
+														<td>
+															<div class="cust_width cust_border_0">
+																<img src="assets/img_web/tab5_img.jpg" class="img-fluid" alt="">
+															</div>
+														</td>
+														<td>
+															<div class="cust_width cust_border_0">
+																<img src="assets/img_web/tab5_img.jpg" class="img-fluid" alt="">
+															</div>
+														</td>
+													</tr>
+												</table>
+												<!-- <div class="row">
+													<img src="assets/img_web/tab6_img3.png" class="img-fluid w-100 mb-20" alt="">
+													<div class="col-md-4 p-0">
+														<img src="assets/img_web/tab6_img.jpg" class="img-fluid w-100" alt="">
+													</div>
+													<div class="col-md-4 p-0">
+														<img src="assets/img_web/tab6_img.jpg" class="img-fluid w-100" alt="">
+													</div>
+													<div class="col-md-4 p-0">
+														<img src="assets/img_web/tab6_img2.png" class="img-fluid w-100" alt="">
+													</div>
+												</div> -->
+												<div class="mt-20">
+													<div class="text-center">
+														<label>Šírka</label>
+														<input type="text" placeholder="" id="" class="para_width2 w49"> cm
+													</div>
+												</div>
+											</div>
+											<div class="col-md-3 d-flex flex-column justify-content-around">
+												<div class="align-items-center d-flex">
+													<label class="lbl_sides">Výška <br><small>pravá predná</small></label>
+													<input type="text" placeholder="" id="" class="w-25 para_rfh2 mx-1"> cm
+												</div>
+												<div class="mt-50">
+													<label>Hĺbka</label>
+													<input type="text" placeholder="" id="" class="para_width2 w49"> cm
+												</div>
+											</div>
+										</div>
+
+										<div class="container mt-20">
+											<div class="px-5 mb-5">
+												<h5 class="m-0">Dub Kansas</h5>
+												<small>001 - EGER 5</small>
+											</div>
+											<div class="swiper-container pl-25 pr-25">
+												<!-- Additional required wrapper -->
+												<div class="swiper-wrapper">
+													<div class="swiper-slide">
+														<img src="assets/img_web/tab6_img4.png" alt="" class="folding_inside_img">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/tab6_img5.png" alt="" class="folding_inside_img">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/tab6_img5.png" alt="" class="folding_inside_img">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/tab6_img6.png" alt="" class="folding_inside_img">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/tab6_img4.png" alt="" class="folding_inside_img">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/tab6_img5.png" alt="" class="folding_inside_img">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/tab6_img5.png" alt="" class="folding_inside_img">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/tab6_img6.png" alt="" class="folding_inside_img">
+													</div>
+												</div>
+
+												<!-- If we need navigation buttons -->
+												<div class="swiper-button-prev"></div>
+												<div class="swiper-button-next"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="tabDiv_right">
+										<h4 class="font-weight-bold">Rozmery</h4>
+										<div class="row">
+											<div class="col-md-6 d-flex justify-content-between">
+												<label class="font-weight-bold">Šírka&nbsp;</label>
+												<input type="text" placeholder="" id="" class="para_width2 w-25 h30"> cm
+											</div>
+											<div class="col-md-6 d-flex justify-content-between">
+												<label class="lbl_sides font-weight-bold">Výška <br><small>ľavá predná</small></label>
+												<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25 h30"> cm
+											</div>
+
+											<div class="col-md-6 d-flex justify-content-between">
+												<label class="font-weight-bold">Hĺbka</label>
+												<input type="text" placeholder="" id="" class="para_width2 w-25 h30"> cm
+											</div>
+											<div class="col-md-6 d-flex justify-content-between">
+												<label class="lbl_sides font-weight-bold">Výška <br><small>pravá predná</small></label>
+												<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25 h30">cm
+											</div>
+											<div class="col-md-6">
+												<h5 class="font-weight-bold mt-3">Drevodekor...</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Dub Kansas Hnedý</h6>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<h5 class="font-weight-bold mt-3">ABS</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Dub Kansas Hnedý</h6>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<h5 class="font-weight-bold mt-3">Dorazová lišta</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Dub Kansas Hnedý</h6>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<h5 class="font-weight-bold mt-3">Profil</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Hliník - Biely</h6>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<h5 class="font-weight-bold mt-3">Výplne dvier</h5>
+												<div class="row">
+													<div class="col-md-4">
+														<div class="card p-1">
+															<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="card p-1">
+															<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="card p-1">
+															<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<p class="tip1 mt-20"><b>TIP</b>: Pri dverách delených na polovicu,<br>
+										tretinu resp. na pätinu si môžete<br>
+										ľubovoľne zmeniť výšku deliaceho priestoru.</p>
+								</div>
+							</div>
+							<div class="field btns">
+								<button class="prev-2 prev">Previous</button>
+								<button class="next-2 next btn-green">Next</button>
+							</div>
+						</div>
+
+						<!-- tab 7 -->
+
+						<div class="page">
+							<div class="row">
+								<div class="col-md-9 mt-0">
+									<!-- <center>
+										<small>Pohľad zhora</small>
+									</center> -->
+									<div class="account-details-form">
+										<img src="assets/img_web/info.png" alt="">
+										<div class="row">
+											<div class="col-md-3 d-flex flex-column justify-content-center">
+												<div class="align-items-center d-flex">
+													<label class="lbl_sides">Výška <br><small>ľavá predná</small></label>
+													<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25"> cm
+												</div>
+											</div>
+											<div class="col-md-5">
+												<table class="grid_center">
+													<tr>
+														<td>
+															<div class="cust_width">
+																<!-- <img src="assets/img_web/tab5_img.jpg" class="img-fluid" alt=""> -->
+															</div>
+														</td>
+														<td>
+															<div class="cust_width">
+																<!-- <img src="assets/img_web/tab5_img.jpg" class="img-fluid" alt=""> -->
+															</div>
+														</td>
+														<td>
+															<div class="cust_width">
+																<!-- <img src="assets/img_web/tab5_img.jpg" class="img-fluid" alt=""> -->
+															</div>
+														</td>
+														<td>
+															<div class="cust_width">
+																<!-- <img src="assets/img_web/tab5_img.jpg" class="img-fluid" alt=""> -->
+															</div>
+														</td>
+													</tr>
+												</table>
+
+												<!-- <div class="row">
+													<div class="col-md-4 p-0">
+														<img src="assets/img_web/tab6_img.jpg" class="img-fluid w-100" alt="">
+													</div>
+													<div class="col-md-4 p-0">
+														<img src="assets/img_web/tab6_img.jpg" class="img-fluid w-100" alt="">
+													</div>
+													<div class="col-md-4 p-0">
+														<img src="assets/img_web/tab6_img2.png" class="img-fluid w-100" alt="">
+													</div>
+												</div> -->
+												<div class="mt-20">
+													<div class="text-center">
+														<label>Šírka</label>
+														<input type="text" placeholder="" id="" class="para_width2 w49"> cm
+													</div>
+												</div>
+											</div>
+											<div class="col-md-3 d-flex flex-column justify-content-around">
+												<div class="align-items-center d-flex">
+													<label class="lbl_sides">Výška <br><small>pravá predná</small></label>
+													<input type="text" placeholder="" id="" class="w-25 para_rfh2 mx-1"> cm
+												</div>
+												<div class="mt-50">
+													<label>Hĺbka</label>
+													<input type="text" placeholder="" id="" class="para_width2 w49"> cm
+												</div>
+											</div>
+										</div>
+
+										<div class="container mt-50">
+											<div class="swiper-container pl-25 pr-25 py-3">
+												<!-- Additional required wrapper -->
+												<div class="swiper-wrapper">
+													<div class="swiper-slide">
+														<img src="assets/img_web/tab7_img1.jpg" alt="" class="image-fluid tab7zoom">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/tab7_img2.jpg" alt="" class="image-fluid tab7zoom">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/tab7_img3.jpg" alt="" class="image-fluid tab7zoom">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/tab7_img4.jpg" alt="" class="image-fluid tab7zoom">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/tab7_img5.jpg" alt="" class="image-fluid tab7zoom">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/tab7_img6.jpg" alt="" class="image-fluid tab7zoom">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/tab7_img7.jpg" alt="" class="image-fluid tab7zoom">
+													</div>
+													<div class="swiper-slide">
+														<img src="assets/img_web/tab7_img8.jpg" alt="" class="image-fluid tab7zoom">
+													</div>
+												</div>
+
+												<!-- If we need navigation buttons -->
+												<div class="swiper-button-prev"></div>
+												<div class="swiper-button-next"></div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="tabDiv_right">
+										<h4 class="font-weight-bold">Rozmery</h4>
+										<div class="row">
+											<div class="col-md-6 d-flex justify-content-between">
+												<label class="font-weight-bold">Šírka&nbsp;</label>
+												<input type="text" placeholder="" id="" class="para_width2 w-25 h30"> cm
+											</div>
+											<div class="col-md-6 d-flex justify-content-between">
+												<label class="lbl_sides font-weight-bold">Výška <br><small>ľavá predná</small></label>
+												<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25 h30"> cm
+											</div>
+
+											<div class="col-md-6 d-flex justify-content-between">
+												<label class="font-weight-bold">Hĺbka</label>
+												<input type="text" placeholder="" id="" class="para_width2 w-25 h30"> cm
+											</div>
+											<div class="col-md-6 d-flex justify-content-between">
+												<label class="lbl_sides font-weight-bold">Výška <br><small>pravá predná</small></label>
+												<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25 h30">cm
+											</div>
+											<div class="col-md-6">
+												<h5 class="font-weight-bold mt-3">Drevodekor...</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Dub Kansas Hnedý</h6>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<h5 class="font-weight-bold mt-3">ABS</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Dub Kansas Hnedý</h6>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<h5 class="font-weight-bold mt-3">Dorazová lišta</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Dub Kansas Hnedý</h6>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<h5 class="font-weight-bold mt-3">Profil</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Hliník - Biely</h6>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<h5 class="font-weight-bold mt-3">Výplne dvier</h5>
+												<div class="row">
+													<div class="col-md-4">
+														<div class="card p-1">
+															<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="card p-1">
+															<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="card p-1">
+															<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<p class="tip1 mt-20"><b>TIP</b>: Pri dverách delených na polovicu,<br>
+										tretinu resp. na pätinu si môžete<br>
+										ľubovoľne zmeniť výšku deliaceho priestoru.</p>
+								</div>
+							</div>
+							<div class="field btns">
+								<button class="prev-2 prev">Previous</button>
+								<button class="next-2 next btn-green">Next</button>
+							</div>
+						</div>
+
+						<!-- tab 8 -->
+
+						<div class="page">
+							<div class="row">
+								<div class="col-md-9 mt-20">
+									<div class="account-details-form">
+										<div class="row">
+											<div class="col-md-3 d-flex flex-column justify-content-center">
+												<div class="align-items-center d-flex">
+													<label class="lbl_sides">Výška <br><small>ľavá predná</small></label>
+													<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25"> cm
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="p-0">
+													<table class="grid_center">
+														<tr>
+															<td>
+																<div class="cust_width"></div>
+															</td>
+															<td>
+																<div class="cust_width"></div>
+															</td>
+															<td>
+																<div class="cust_width"></div>
+															</td>
+														</tr>
+													</table>
+													<!-- <img src="assets/img_web/tab8_img1.jpg" class="img-fluid w-100" alt=""> -->
+												</div>
+												<div class="mt-20">
+													<div class="text-center">
+														<label>Šírka</label>
+														<input type="text" placeholder="" id="" class="para_width2 w49"> cm
+													</div>
+												</div>
+											</div>
+											<div class="col-md-3 d-flex flex-column justify-content-around">
+												<div class="align-items-center d-flex">
+													<label class="lbl_sides">Výška <br><small>pravá predná</small></label>
+													<input type="text" placeholder="" id="" class="w-25 para_rfh2 mx-1"> cm
+												</div>
+												<div class="mt-50">
+													<label>Hĺbka</label>
+													<input type="text" placeholder="" id="" class="para_width2 w49"> cm
+												</div>
+											</div>
+										</div>
+
+										<div class="container mt-10">
+											<div class="swiper-container pl-25 pr-25 py-3">
+												<div class="swiper-wrapper">
+													<div class="swiper-slide d-flex flex-column">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="mb-20 zoom select_imgs">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="zoom select_imgs">
+													</div>
+													<div class="swiper-slide d-flex flex-column">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="mb-20 zoom select_imgs">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="zoom select_imgs">
+													</div>
+													<div class="swiper-slide d-flex flex-column">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="mb-20 zoom select_imgs">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="zoom select_imgs">
+													</div>
+													<div class="swiper-slide d-flex flex-column">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="mb-20 zoom select_imgs">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="zoom select_imgs">
+													</div>
+													<div class="swiper-slide d-flex flex-column">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="mb-20 zoom select_imgs">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="zoom select_imgs">
+													</div>
+													<div class="swiper-slide d-flex flex-column">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="mb-20 zoom select_imgs">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="zoom select_imgs">
+													</div>
+													<div class="swiper-slide d-flex flex-column">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="mb-20 zoom select_imgs">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="zoom select_imgs">
+													</div>
+													<div class="swiper-slide d-flex flex-column">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="mb-20 zoom select_imgs">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="zoom select_imgs">
+													</div>
+													<div class="swiper-slide d-flex flex-column">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="mb-20 zoom select_imgs">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="zoom select_imgs">
+													</div>
+													<div class="swiper-slide d-flex flex-column">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="mb-20 zoom select_imgs">
+														<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="zoom select_imgs">
+													</div>
+												</div>
+
+												<div class="swiper-button-prev"></div>
+												<div class="swiper-button-next"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="tabDiv_right">
+										<h4 class="font-weight-bold">Rozmery</h4>
+										<div class="row">
+											<div class="col-md-6 d-flex justify-content-between">
+												<label class="font-weight-bold">Šírka&nbsp;</label>
+												<input type="text" placeholder="" id="" class="para_width2 w-25 h30"> cm
+											</div>
+											<div class="col-md-6 d-flex justify-content-between">
+												<label class="lbl_sides font-weight-bold">Výška <br><small>ľavá predná</small></label>
+												<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25 h30"> cm
+											</div>
+
+											<div class="col-md-6 d-flex justify-content-between">
+												<label class="font-weight-bold">Hĺbka</label>
+												<input type="text" placeholder="" id="" class="para_width2 w-25 h30"> cm
+											</div>
+											<div class="col-md-6 d-flex justify-content-between">
+												<label class="lbl_sides font-weight-bold">Výška <br><small>pravá predná</small></label>
+												<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25 h30">cm
+											</div>
+											<div class="col-md-6">
+												<h5 class="font-weight-bold mt-3">Drevodekor...</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Dub Kansas Hnedý</h6>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<h5 class="font-weight-bold mt-3">ABS</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Dub Kansas Hnedý</h6>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<h5 class="font-weight-bold mt-3">Dorazová lišta</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Dub Kansas Hnedý</h6>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<h5 class="font-weight-bold mt-3">Profil</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Hliník - Biely</h6>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<h5 class="font-weight-bold mt-3">Výplne dvier</h5>
+												<div class="row">
+													<div class="col-md-4">
+														<div class="card p-1">
+															<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="card p-1">
+															<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="card p-1">
+															<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<p class="tip1 mt-60"><b>TIP</b>: Pri dverách delených na polovicu,<br>
+										tretinu resp. na pätinu si môžete<br>
+										ľubovoľne zmeniť výšku deliaceho priestoru.</p>
+								</div>
+							</div>
+							<div class="field btns">
+								<button class="prev-2 prev">Previous</button>
+								<button class="next-2 next btn-green">Next</button>
+							</div>
+						</div>
+
+						<!-- tab 9 -->
+
+						<div class="page">
+							<div class="row">
+								<div class="col-md-9 mt-0">
+									<div class="account-details-form">
+										<div class="row">
+											<div class="col-md-5 mx-auto">
+												<div class="justify-content-center row">
+													<div class="col-md-10">
+														<img src="assets/img_web/Typ_A_Pôdorys.jpg" alt="" class="ml-auto w-100">
+													</div>
+													<div class="col-md-3 p-0">
+														<img src="assets/img_web/tab6_img2.png" class="img-fluid w-100" alt="">
+													</div>
+													<div class="col-md-3 p-0">
+														<img src="assets/img_web/tab6_img2.png" class="img-fluid w-100" alt="">
+													</div>
+													<div class="col-md-3 p-0">
+														<img src="assets/img_web/tab6_img2.png" class="img-fluid w-100" alt="">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-5">
+												<img src="assets/img_web/tab8_img1.jpg" class="img-fluid w-100" alt="">
+												<div class="col-md-12 text-right">
+													<img src="assets/img_web/tab9_img1.png" class="img-fluid" alt="">
+													<img src="assets/img_web/tab9_img2.png" class="img-fluid" alt="">
+												</div>
+											</div>
+										</div>
+										<div class="container">
+											<div class="row">
+												<hr class="col-md-11" style="border:1px solid #ccc">
+												<div class="col-md-7">
+													<h3 class="font-weight-bold">Cena s DPH</h3>
+												</div>
+												<div class="col-md-5">
+													<div class="d-flex justify-content-end">
+														<div class="">
+															<h3 class="font-weight-bold mb-0">1 480,95€</h3>
+															<h5>vrátane montáže</h5>
+														</div>
+														<div class="ml-3">
+															<button type="button" class="btn btn-danger tab9_btn"><img src="assets/img_web/tab9_img3.png" alt=""> Objednať</button>
+														</div>
+													</div>
+													<!-- <div class="justify-content-center row">
+														<div class="col-md-5">
+															<h3>1 480,95€</h3>
+															<h5>vrátane montáže</h5>
+														</div>
+														<div class="col-md-6">
+															<button type="button" class="btn btn-danger tab9_btn">Objednať</button>
+														</div>
+													</div> -->
+												</div>
+											</div>
+										</div>
+
+
+									</div>
+								</div>
+								<div class="col-md-3">
+									<div class="tabDiv_right">
+										<h4 class="font-weight-bold">Rozmery</h4>
+										<div class="row">
+											<div class="col-md-6 d-flex justify-content-between">
+												<label class="font-weight-bold">Šírka&nbsp;</label>
+												<input type="text" placeholder="" id="" class="para_width2 w-25 h30"> cm
+											</div>
+											<div class="col-md-6 d-flex justify-content-between">
+												<label class="lbl_sides font-weight-bold">Výška <br><small>ľavá predná</small></label>
+												<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25 h30"> cm
+											</div>
+
+											<div class="col-md-6 d-flex justify-content-between">
+												<label class="font-weight-bold">Hĺbka</label>
+												<input type="text" placeholder="" id="" class="para_width2 w-25 h30"> cm
+											</div>
+											<div class="col-md-6 d-flex justify-content-between">
+												<label class="lbl_sides font-weight-bold">Výška <br><small>pravá predná</small></label>
+												<input type="text" placeholder="" id="" class="mx-1 para_lfh2 w-25 h30">cm
+											</div>
+											<div class="col-md-6">
+												<h5 class="font-weight-bold mt-3">Drevodekor...</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Dub Kansas Hnedý</h6>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<h5 class="font-weight-bold mt-3">ABS</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Dub Kansas Hnedý</h6>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<h5 class="font-weight-bold mt-3">Dorazová lišta</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/Drevodekor_img.jpg" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Dub Kansas Hnedý</h6>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<h5 class="font-weight-bold mt-3">Profil</h5>
+												<div class="card p-1">
+													<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+													<h6 class="f10 font-weight-bold">Hliník - Biely</h6>
+												</div>
+											</div>
+											<div class="col-md-12">
+												<h5 class="font-weight-bold mt-3">Výplne dvier</h5>
+												<div class="row">
+													<div class="col-md-4">
+														<div class="card p-1">
+															<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="card p-1">
+															<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="card p-1">
+															<img src="assets/img_web/profile_img.png" alt="" class="Dub_img">
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<p class="tip1 mt-60"><b>TIP</b>: Pri dverách delených na polovicu,<br>
+										tretinu resp. na pätinu si môžete<br>
+										ľubovoľne zmeniť výšku deliaceho priestoru.</p>
+								</div>
+							</div>
+							<div class="field btns">
+								<button class="prev-2 prev">Previous</button>
+								<button class="next-2 next btn-green">Next</button>
+							</div>
+						</div>
+
+						<!-- tab 10 -->
+						<div class="page">
+							<div class="row">
+								<div class="col-md-9">
+									<div class="tabDiv_right">
+										<div class="form-group form-check">
+											<input type="checkbox" class="form-check-input" id="Nakupujem_na_firmu">
+											<label class="form-check-label" for="Nakupujem_na_firmu">Nakupujem na firmu</label>
+										</div>
+										<div class="row">
+											<div class="col-md-4">
+												<h4>Kontaktné údaje</h4>
+												<div class="form-group">
+													<input type="text" class="form-control w-75" id="Meno" placeholder="Meno">
+												</div>
+
+												<div class="form-group">
+													<input type="text" class="form-control w-75" id="Priezvisko" placeholder="Priezvisko">
+												</div>
+
+												<div class="form-group">
+													<input type="text" class="form-control w-75" id="Telefón" placeholder="Telefón">
+												</div>
+
+												<div class="form-group">
+													<input type="text" class="form-control w-75" id="Email" placeholder="Email">
+												</div>
+											</div>
+
+											<div class="col-md-4">
+												<h4>Dodacia adresa</h4>
+												<div class="form-group">
+													<input type="text" class="form-control w-75" id="Ulica_a_číslo" placeholder="Ulica a číslo">
+												</div>
+
+												<div class="form-group">
+													<input type="text" class="form-control w-75" id="Mesto" placeholder="Mesto">
+												</div>
+
+												<div class="form-group">
+													<input type="text" class="form-control w-75" id="PSČ" placeholder="PSČ">
+												</div>
+											</div>
+
+											<div class="col-md-4">
+												<h4>Fakturačná adresa</h4>
+												<div class="form-group">
+													<input type="text" class="form-control w-75" id="Ulica_a_číslo" placeholder="Ulica a číslo">
+												</div>
+
+												<div class="form-group">
+													<input type="text" class="form-control w-75" id="Mesto" placeholder="Mesto">
+												</div>
+
+												<div class="form-group">
+													<input type="text" class="form-control w-75" id="PSČ" placeholder="PSČ">
+												</div>
+											</div>
+											<div class="col-md-8">
+												<h4>Poznámka</h4>
+												<div class="form-group">
+													<textarea name="Poznámka" id="" rows="5" class="w-100 form-control"></textarea>
+												</div>
+											</div>
+											<div class="col-md-4 grid_end">
+												<div>
+													<a href="order_place.php">
+														<button type="button" class="btn btn-danger tab10_btn mb-2"><img src="assets/img_web/tab9_img3.png" alt=""> Objednať</button>
+													</a>
+													<p class="tab10_font">Kliknutím na tlačidlo záväzne potvrdzujete objednávku<br>a súhlasíte s našimi <u>obchodnými podmienkami</u>.</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-3">
+									<img src="assets/img_web/tab8_img1.jpg" class="img-fluid w-100" alt="">
+									<div class="row">
+										<div class="col-md-6">
+											<h4 class="font-weight-bold">Cena s DPH</h4>
+										</div>
+										<div class="col-md-6">
+											<h4 class="font-weight-bold mb-0">1 480,95€</h4>
+											<small>vrátane montáže</small>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- <div class="field btns">
+								<button class="prev-2 prev">Previous</button>
+								<button class="next-2 next btn-green">Next</button>
+							</div> -->
+						</div>
+
+						<!-- tab 11 -->
+						<div class="page">
+							<div class="row">
+								<div class="col-md-8"></div>
+								<div class="col-md-4 mb-60">
+									<button type="button" class="btn btn-danger tab9_btn font14">Nová konfigurácia</button>
+									<button type="button" class="bg-white btn btn-danger font-weight-bold tab9_btn text-danger font14">Späť na denir.sk</button>
+								</div>
+								<div class="col-md-6 text-center">
+									<img src="assets/img_web/tab10_img1.jpg" class="img-fluid mb-50 mt-110" alt="">
+									<h2 class="font-weight-bold mb-20">Ďakujeme za objednávku!</h2>
+									<p class="font16">Náš tím už začal pracovať na Vašej objednávke.<br>O jej doručení Vás budeme informovať prostredníctvom emailu a SMS.</p>
+								</div>
+								<div class="col-md-6">
+									<h2 class="font-weight-bold mb-10">Stiahnite si appku Denir a<br> sledujte, ako vyrobíme vašu<br>vstavanú skriňu.</h2>
+									<img src="assets/img_web/tab10_img2.png" class="img-fluid mb-50" alt="">
+								</div>
+								<div class="col-md-12 flex_center">
+									<h4 class="font-weight-bold">Nakonfigurujte si tiež:</h4>
+									<img src="assets/img_web/tab10_img3.png" class="img-fluid" alt="">
+								</div>
+							</div>
+							<!-- <div class="field btns">
+								<button class="prev-2 prev">Previous</button>
+								<button class="next-2 next btn-green">Next</button>
+							</div> -->
 						</div>
 
 						<div class="page">
@@ -2103,6 +3291,98 @@
 </div>
 
 
+<!-- Modal Number 1 -->
+<div class="modal fade model_num1" id="modal_num1" tabindex="-1" role="dialog" aria-labelledby="modalLabel_num1" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<!-- <button type="button" class="close position-absolute" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button> -->
+		<div class="modal-content">
+			<div class="modal-header justify-content-center mx-auto">
+				<h5 class="modal-title" id="modalLabel_num1">Zdieľajte dizajn so známymiapriateľmi</h5>
+			</div>
+			<div class="modal-body">
+				<div class="d-flex flex-column justify-content-center align-items-center mx-auto">
+					<p class="text-center modal_paragraph_1">
+						Podeľte saoVašu konfiguráciusostatnými.<br> Zadajte email alebo vyberte inú možnosť
+						zdieľania.
+					</p>
+					<div class="form-check mt-3">
+						<input class="form-check-input" type="checkbox" value="" id="agreement">
+						<label class="form-check-label checkLabel" for="agreement">
+							Zobrazit cenovú ponukuamožnosť objednat
+						</label>
+					</div>
+				</div>
+
+				<div class="d-flex justify-content-between align-items-center mt-3 subscribe_section">
+					<div class="subscribe_email d-flex flex-column justify-content-center">
+						<form action="#" method="post">
+							<input type="text" name="email" id="email" class="form-control" placeholder="Email známeho" />
+							<button type="submit" class="btn btn-danger w-100 mt-2">Zdieľať</button>
+						</form>
+					</div>
+
+					<div class="or_section mt-2">
+						<p class="font-weight-bold text-center ml-1 ">albeo</p>
+					</div>
+
+					<div class="modal_social_icons d-flex justify-content-center align-items-center">
+						<a href="#" target="_blank" class="text-decoration-none mr-2">
+							<img src="assets/img_web/fb.jpg" alt="facebook" class="img-responsive d-block m-auto">
+						</a>
+						<a href="#" target="_blank" class="text-decoration-none mr-2">
+							<img src="assets/img_web/whtsapp.jpg" alt="whatsapp" class="img-responsive d-block m-auto">
+						</a>
+						<a href="#" target="_blank" class="text-decoration-none mr-2">
+							<img src="assets/img_web/msgner.jpg" alt="messagener" class="img-responsive d-block m-auto">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal Number 2 -->
+<div class="modal fade" id="modal_num2" tabindex="-1" role="dialog" aria-labelledby="modalLabel_num2" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="d-flex flex-row-reverse mb-3">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="row mt-3">
+					<div class="col-md-6 col-sm-12 koi_acc">
+						<form action="#" method="post">
+							<h4 class="text-center  font-weight-bolder mt-2">
+								Uložte si vašu konfiguráciu na neskôr
+							</h4>
+							<input type="text" name="email_koiAcc" id="email_koi" class="form-control mt-3" placeholder="Váš email" />
+							<button type="submit" class="btn btn-danger w-100 mt-2"> <img src="assets/img_web/save.png" class="img-responsive mr-2">Uložiť konfiguráciu
+							</button>
+						</form>
+					</div>
+					<div class="col-md-6 col-sm-12">
+						<form action="#" method="post">
+							<h4 class="text-center  font-weight-bolder mt-2">
+								Máte otázky?
+							</h4>
+							<p class="my-2 custom_email_text">Nechajte nám na seba kontaktamy
+								sa Vám čoskoro ozveme.</p>
+							<input type="text" name="email_koiAcc" id="email_koi" class="form-control" placeholder="Vaše číslo" />
+							<button type="submit" class="btn btn-danger w-100 mt-2"> <img src="assets/img_web/phone.png" class="img-responsive mr-2">Ozvite sa mi
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 
 
 <script>
@@ -2135,11 +3415,11 @@
 		const prevButtons = document.querySelectorAll(".prev");
 		const stepsNumber = pages.length;
 
-		if (progressNumber !== stepsNumber) {
-			console.warn(
-				"Error, number of steps in progress bar do not match number of pages"
-			);
-		}
+		// if (progressNumber !== stepsNumber) {
+		// 	console.warn(
+		// 		"Error, number of steps in progress bar do not match number of pages"
+		// 	);
+		// }
 
 		document.documentElement.style.setProperty("--stepNumber", stepsNumber);
 
@@ -2157,7 +3437,7 @@
                     (100 / stepsNumber) * current
                 }%`;
 					bullet[current - 1].classList.add("active");
-					progressCheck[current - 1].classList.add("active");
+					// progressCheck[current - 1].classList.add("active");
 					progressText[current - 1].classList.add("active");
 					current += 1;
 				}
@@ -2170,8 +3450,8 @@
 				slidePage.style.marginLeft = `-${
                 (100 / stepsNumber) * (current - 2)
             }%`;
-				bullet[current - 2].classList.remove("active");
-				progressCheck[current - 2].classList.remove("active");
+				bullet[current - 1].classList.remove("active");
+				// progressCheck[current - 2].classList.remove("active");
 				progressText[current - 2].classList.remove("active");
 				current -= 1;
 			});
@@ -2235,4 +3515,34 @@
 		var img = $(this).attr('src');
 		$('.bg_image_ch2').css("background-image", "url(" + img + ")");
 	})
+</script>
+
+<!-- slider js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/js/swiper.min.js"></script>
+<script>
+	$(document).ready(function() {
+		// Swiper: Slider
+		new Swiper('.swiper-container', {
+			loop: true,
+			nextButton: '.swiper-button-next',
+			prevButton: '.swiper-button-prev',
+			slidesPerView: 3,
+			paginationClickable: true,
+			spaceBetween: 20,
+			breakpoints: {
+				1920: {
+					slidesPerView: 6,
+					spaceBetween: 10
+				},
+				1028: {
+					slidesPerView: 2,
+					spaceBetween: 30
+				},
+				480: {
+					slidesPerView: 1,
+					spaceBetween: 10
+				}
+			}
+		});
+	});
 </script>

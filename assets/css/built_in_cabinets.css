@@ -3,6 +3,10 @@ header,
     display: none;
 }
 
+td {
+    padding: 0px;
+}
+
 
 /* .container {
 width: var(--containerWidth);
@@ -54,9 +58,9 @@ margin: 0 0 30px 0;
 }
 
 .form-outer form .page .field {
-    width: 45%;
+    width: 18%;
     height: 45px;
-    margin: 45px auto 45px 0px;
+    margin: 10px auto 45px 0px;
     display: flex;
     position: relative;
 }
@@ -99,7 +103,7 @@ form .page .field button {
     border-radius: 5px;
     color: #fff;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -116,7 +120,7 @@ form .page .btns button {
 
 form .page .btns button.prev {
     margin-right: 3px;
-    font-size: 17px;
+    font-size: 14px;
 }
 
 form .page .btns button.next {
@@ -128,8 +132,9 @@ form .page .btns button.next {
     /* margin: 40px 0; */
     user-select: none;
     flex-direction: row;
-    background: #fff;
+    background: #d9d9d9;
     color: #000;
+    border-radius: 15px;
 }
 
 .progress-bar .step {
@@ -145,23 +150,51 @@ form .page .btns button.next {
     margin-bottom: 8px;
 }
 
+
+/* .progress-bar .step .bullet:first-child {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.progress-bar .step .bullet:last-child {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+} */
+
+.bullet_first {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.bullet_six {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
 .progress-bar .step .bullet {
     height: 35px;
     width: 100%;
-    border: 2px solid #D9D9D9;
-    display: inline-block;
+    border: 2px solid #d9d9d9;
+    /* display: inline-block; */
     /* border-radius: 50%; */
     position: relative;
     transition: 0.2s;
     font-weight: 500;
-    font-size: 17px;
+    font-size: 14px;
     line-height: 11px;
-    border-radius: 15px;
+    /* border-radius: 15px; */
 }
 
 .progress-bar .step .bullet.active {
-    border-color: #FF0000;
-    background: #FF0000;
+    border-color: #ff0000;
+    background: #ff0000;
+}
+
+.progress-bar .step .bullet.active:focus {
+    border-color: #ff0000;
+    background: #ff0000;
+    border-top-right-radius: 15px !important;
+    border-bottom-right-radius: 15px !important;
 }
 
 .progress-bar .step .bullet span {
@@ -172,7 +205,9 @@ form .page .btns button.next {
 }
 
 .progress-bar .step .bullet.active span {
-    display: none;
+    /* display: none; */
+    color: #fff;
+    font-weight: 600;
 }
 
 
@@ -288,7 +323,7 @@ div.radio-with-Icon p.radioOption-Item label {
     /* border: 2px solid #9e9e9e; */
     color: #000;
     cursor: pointer;
-    opacity: .8;
+    opacity: 0.8;
     transition: none;
     font-size: 13px;
     /* padding-top: 25px; */
@@ -299,7 +334,7 @@ div.radio-with-Icon p.radioOption-Item label {
 div.radio-with-Icon p.radioOption-Item label:hover,
 div.radio-with-Icon p.radioOption-Item label:focus,
 div.radio-with-Icon p.radioOption-Item label:active {
-    opacity: .5;
+    opacity: 0.5;
     /* background-color: #de1831; */
     color: #de1831;
     margin: 0 !important;
@@ -336,7 +371,7 @@ div.radio-with-Icon p.radioOption-Item input[type="radio"]:checked~label {
     /* background-color: #de1831; */
     color: #000;
     font-weight: 600;
-    border: 3px solid #FF0000;
+    border: 3px solid #ff0000;
 }
 
 div.radio-with-Icon p.radioOption-Item input[type="radio"]:hover,
@@ -397,8 +432,8 @@ div.radio-with-Icon p.radioOption-Item input[type="radio"]+label:after {
 }
 
 .btn-green {
-    background-color: #FF0000 !important;
-    border: 1px solid #FF0000 !important;
+    background-color: #ff0000 !important;
+    border: 1px solid #ff0000 !important;
 }
 
 .para_depth2 {
@@ -433,8 +468,9 @@ div.built_in_cabinets p.radioOption-Item.thee_cabinets {
 
 div.floorPlan1 p.radioOption-Item {
     display: inline-block;
-    width: 40%;
+    width: 30%;
     height: auto;
+    margin: auto 10px;
 }
 
 .floorPlan1 img {
@@ -449,13 +485,17 @@ div.floorPlan1 p.radioOption-Item {
     border: 1px solid #ccc;
 }
 
+.cust_border_0 {
+    border: none !important;
+}
+
 .grid_center {
     display: grid;
     place-items: center;
 }
 
 div.box_select {
-    border: 1px solid red;
+    outline: 1px solid red !important;
 }
 
 .cust_width img {
@@ -477,7 +517,7 @@ div.box_select {
 /* new css */
 
 .config_head {
-    font-family: 'Muli';
+    font-family: "Muli";
     font-style: normal;
     font-weight: 700;
     font-size: 48px;
@@ -487,7 +527,7 @@ div.box_select {
 }
 
 .config_subHead {
-    font-family: 'Muli';
+    font-family: "Muli";
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -504,10 +544,10 @@ div.box_select {
 }
 
 .tab1_head {
-    font-family: 'Muli';
+    font-family: "Muli";
     font-style: normal;
     font-weight: 700;
-    font-size: 32px;
+    font-size: 30px;
     line-height: 39px;
     text-align: center;
     color: #ffffff;
@@ -533,19 +573,20 @@ div.box_select {
 }
 
 .Späť_btn {
+    padding: 11px;
     width: 124px;
-    height: 52px;
+    height: 47px;
     left: 67px;
-    margin-top: 20px;
-    background: #FFFFFF;
-    border: 1px solid #FF0000;
+    /* margin-top: 20px; */
+    background: #ffffff;
+    border: 1px solid #ff0000;
     box-shadow: 0px 2px 2px rgb(255 0 0 / 20%);
     border-radius: 5px;
     font-weight: 600;
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 20px;
     text-align: center;
-    color: #FF0000;
+    color: #ff0000;
 }
 
 .lbl_sides {
@@ -569,11 +610,11 @@ div.box_select {
 }
 
 .tabDiv_right {
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 0px 4px 5px rgb(0 0 0 / 6%);
     border-radius: 20px;
-    padding: 15px;
-    margin-top: 25px;
+    padding: 12px;
+    margin-top: 18px;
 }
 
 .h30 {
@@ -601,7 +642,7 @@ div.box_select {
 
 .radio_container label {
     font-family: "Open Sans", sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -614,11 +655,13 @@ div.box_select {
     transition: linear 0.3s;
     color: #6e6e6edd;
     margin-bottom: 0px;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
 }
 
 .radio_container input[type="radio"]:checked+label,
 .radio_container input[type="radio"]:checked+small {
-    background-color: #FF0000;
+    background-color: #ff0000;
     color: #f1f3f5;
     /* font-weight: 900; */
     transition: 0.3s;
@@ -633,14 +676,18 @@ div.box_select {
     font-size: 14px !important;
 }
 
+.font16 {
+    font-size: 16px !important;
+}
+
 .Dalej_btn {
     width: 244px;
-    background: #FF0000;
+    background: #ff0000;
     display: flex;
     justify-content: center;
-    margin-top: 80px;
-    height: 52px;
-    font-size: 20px;
+    margin-top: 18px;
+    height: 48px;
+    font-size: 18px;
     align-items: center;
     margin-left: auto;
     margin-right: auto;
@@ -649,3 +696,190 @@ div.box_select {
 .w49 {
     width: 49px;
 }
+
+.Dub_img {
+    width: 48px;
+    padding-bottom: 7px;
+}
+
+.f10 {
+    font-size: 10px;
+}
+
+
+/* slider css */
+
+.swiper-button-prev {
+    background-image: url(../img_web/prev_img.png) !important;
+}
+
+.swiper-button-next {
+    background-image: url(../img_web/next_img.png) !important;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    background-size: 27px 27px !important;
+}
+
+
+/* slider css end */
+
+.folding_inside_img {
+    width: auto;
+    height: 200px;
+}
+
+.tab7_box {
+    border: 0.5px solid rgba(0, 0, 0, 0.45);
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+}
+
+.tab9_btn {
+    background: #ff0000;
+    box-shadow: 0px 2px 2px rgb(255 0 0 / 20%);
+    border-radius: 5px;
+    width: 183px;
+    height: 40px;
+}
+
+.zoom:hover {
+    z-index: 999;
+    -ms-transform: scale(1.2);
+    /* IE 9 */
+    -webkit-transform: scale(1.2);
+    /* Safari 3-8 */
+    transform: scale(1.2);
+}
+
+.tab7zoom:hover {
+    z-index: 999;
+    -ms-transform: scale(1.2);
+    /* IE 9 */
+    -webkit-transform: scale(1.2);
+    /* Safari 3-8 */
+    transform: scale(1.2);
+    box-shadow: 0 0 10px 0 #ccc;
+}
+
+.tab10_font {
+    font-size: 10px;
+    line-height: 12px;
+    text-align: center;
+    color: #000000;
+}
+
+.tab10_btn {
+    background: #ff0000;
+    box-shadow: 0px 2px 2px rgba(255, 0, 0, 0.2);
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #ffffff;
+    width: 256px;
+    height: 52px;
+}
+
+.grid_end {
+    display: grid;
+    place-items: end;
+}
+
+.flex_center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tab11_btn {
+    background: #ff0000;
+    box-shadow: 0px 2px 2px rgb(255 0 0 / 20%);
+    border-radius: 5px;
+    width: 244px;
+    height: 52px;
+}
+
+
+/* modal css start */
+
+.modal_paragraph_1 {
+    font-weight: 600;
+    color: #000;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.model_num1 .modal-title {
+    font-weight: 600;
+    color: #000;
+    font-size: 1rem;
+}
+
+.checkLabel,
+.or_section p {
+    font-weight: 500;
+    color: #000;
+}
+
+.modal-content {
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.font-weight-bolder {
+    font-weight: 600;
+    color: #000;
+}
+
+@media only screen and (max-width: 768px) {
+    .subscribe_section {
+        flex-direction: column;
+    }
+    .or_section {
+        margin-top: 1rem !important;
+    }
+    .koi_acc {
+        border-right: none !important;
+    }
+}
+
+p.custom_email_text {
+    font-size: 0.9em;
+    line-height: 1.2;
+    color: #000;
+}
+
+.koi_acc {
+    border-right: 1px dashed #ccc;
+}
+
+
+/* modal css end */
